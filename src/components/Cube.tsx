@@ -6,7 +6,7 @@ import { Mesh } from "three";
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 
 export const Cube = () => {
-  const cubeRef = useRef<Mesh>(null); // Ref for the cube
+  const cubeRef = useRef<Mesh>(null);
   const scroll = useScroll();
   const [cubeSize, setCubeSize] = useState<[number, number, number]>([1, 1, 1]);
   const [htmlPosition, setHtmlPosition] = useState<[number, number, number]>([
@@ -20,15 +20,11 @@ export const Cube = () => {
     if (cubeRef.current) {
       const rotationFactor = Math.PI * 2;
       let targetRotation = scroll.offset * rotationFactor;
-
-      // Find the closest snap point
       const closestSnapPoint = snapPoints.reduce((prev, curr) =>
         Math.abs(curr - targetRotation) < Math.abs(prev - targetRotation)
           ? curr
           : prev
       );
-
-      // If within threshold, lerp towards the snap point
       if (Math.abs(closestSnapPoint - targetRotation) < snapThreshold) {
         targetRotation = lerp(
           cubeRef.current.rotation.x,
@@ -52,14 +48,12 @@ export const Cube = () => {
 
     const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
     setCubeSize(newSize);
-
-    // Update HTML position to be on the face of the cube
     setHtmlPosition([0, 0, newSize[2] / 2 + 0.01]);
   };
 
   useEffect(() => {
     window.addEventListener("resize", updateSize);
-    updateSize(); // Initial size update
+    updateSize();
 
     return () => {
       window.removeEventListener("resize", updateSize);
