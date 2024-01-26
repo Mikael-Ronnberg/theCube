@@ -1,47 +1,37 @@
-import React, { useRef, useMemo } from "react";
+import { useRef } from "react";
+import { Sphere } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { Mesh } from "three";
 
-export const Particles: React.FC<{ count?: number }> = ({ count = 1000 }) => {
-  const meshRef = useRef<THREE.Points>(null);
+export interface ParticleProps {
+  position: [number, number, number];
+}
 
-  const particles = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      const x = Math.random() * 5 - 2.5;
-      const y = Math.random() * 5 - 2.5;
-      const z = Math.random() * 5 - 2.5;
-      temp.push(x, y, z);
-    }
-    return new Float32Array(temp);
-  }, [count]);
+export const Particle = ({ position }: ParticleProps) => {
+  const meshRef = useRef<Mesh>(null);
+  const velocity = useRef([
+    Math.random() * 0.02 - 0.01,
+    Math.random() * 0.02 - 0.01,
+    Math.random() * 0.02 - 0.01,
+  ]);
 
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += 0.001;
-      meshRef.current.rotation.y += 0.001;
+      meshRef.current.position.x += velocity.current[0];
+      meshRef.current.position.y += velocity.current[1];
+      meshRef.current.position.z += velocity.current[2];
+
+      if (meshRef.current.position.x > 5 || meshRef.current.position.x < -5) {
+        velocity.current[0] *= -1;
+      }
+      if (meshRef.current.position.y > 5 || meshRef.current.position.y < -5) {
+        velocity.current[1] *= -1;
+      }
+      if (meshRef.current.position.z > 5 || meshRef.current.position.z < -5) {
+        velocity.current[2] *= -1;
+      }
     }
   });
 
-  return (
-    <points ref={meshRef}>
-      <bufferGeometry attach="geometry">
-        <bufferAttribute
-          attach="attributes-position"
-          count={particles.length / 3}
-          array={particles}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        attach="material"
-        size={0.05}
-        color="white"
-        depthTest={false}
-        depthWrite={false} // Add this line
-        transparent={true} // Optionally, make the material transparent
-        opacity={0.5}
-      />
-    </points>
-  );
+  return <Sphere ref={meshRef} args={[1, 2, 3]} position={position} />;
 };

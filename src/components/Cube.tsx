@@ -68,7 +68,7 @@ export const Cube = () => {
       <meshStandardMaterial color="pink" />
       <Html
         occlude
-        distanceFactor={1.5}
+        distanceFactor={5.5}
         transform
         portal={{ current: scrollData.fixed }}
         position={htmlPosition}
