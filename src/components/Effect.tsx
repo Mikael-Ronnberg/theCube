@@ -11,16 +11,16 @@ export const Effect = () => {
       .fill([0, 0, 0])
       .map((): ParticleProps => {
         const position: [number, number, number] = [
-          Math.random() * size.width,
-          Math.random() * size.height,
-          0,
+          (Math.random() - 0.5) * 250,
+          (Math.random() - 0.5) * 250,
+          (Math.random() - 0.5) * 250,
         ];
         return { position };
       });
   }, [numberOfParticles, size.width, size.height]);
 
   return (
-    <group position={[-1000, -400, -100]}>
+    <group position={[-20, -20, -100]}>
       {" "}
       {/* Adjust these values as needed */}
       {particles.map((particle, index) => (
