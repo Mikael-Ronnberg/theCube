@@ -1,12 +1,14 @@
 import { Html, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Mesh } from "three";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
+interface CubeProps {
+  cubeRef: React.RefObject<Mesh>;
+}
 
-export const Cube = () => {
-  const cubeRef = useRef<Mesh>(null);
+export const Cube = ({ cubeRef }: CubeProps) => {
   const scroll = useScroll();
   const [cubeSize, setCubeSize] = useState<[number, number, number]>([1, 1, 1]);
   const [htmlPosition, setHtmlPosition] = useState<[number, number, number]>([
@@ -25,6 +27,7 @@ export const Cube = () => {
           ? curr
           : prev
       );
+
       if (Math.abs(closestSnapPoint - targetRotation) < snapThreshold) {
         targetRotation = lerp(
           cubeRef.current.rotation.x,
@@ -43,8 +46,8 @@ export const Cube = () => {
     const navbarHeight = 100;
     const padding = 60;
 
-    const newWidth = Math.max(0, width - padding * 4) / 100;
-    const newHeight = Math.max(0, height - navbarHeight - padding * 2) / 100;
+    const newWidth = Math.max(0, width - padding * 4) / 300;
+    const newHeight = Math.max(0, height - navbarHeight - padding * 2) / 300;
 
     const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
     setCubeSize(newSize);
@@ -63,9 +66,9 @@ export const Cube = () => {
   const scrollData = useScroll();
 
   return (
-    <mesh ref={cubeRef} visible position={[0, 0, -5]}>
+    <mesh ref={cubeRef} visible position={[0, 0, -1]}>
       <boxGeometry args={cubeSize} />
-      <meshStandardMaterial color="pink" />
+      <meshStandardMaterial color="black" />
       <Html
         occlude
         distanceFactor={5.5}

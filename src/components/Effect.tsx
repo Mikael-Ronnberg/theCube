@@ -1,31 +1,42 @@
 import { useMemo } from "react";
-import { useThree } from "@react-three/fiber";
-import { Particle, ParticleProps } from "./Particles";
+import { Mesh, Vector3 } from "three";
+import { Line } from "@react-three/drei";
+import { Particle } from "./Particle";
 
-export const Effect = () => {
-  const { size } = useThree();
-  const numberOfParticles = 300;
+interface EffectProps {
+  cubeRef: React.RefObject<Mesh>;
+}
+
+export const Effect = ({ cubeRef }: EffectProps) => {
+  const numParticles = 200;
 
   const particles = useMemo(() => {
-    return new Array(numberOfParticles)
-      .fill([0, 0, 0])
-      .map((): ParticleProps => {
-        const position: [number, number, number] = [
-          (Math.random() - 0.5) * 250,
-          (Math.random() - 0.5) * 250,
-          (Math.random() - 0.5) * 250,
-        ];
-        return { position };
-      });
-  }, [numberOfParticles, size.width, size.height]);
+    return new Array(numParticles)
+      .fill(null)
+      .map(
+        () =>
+          new Vector3(
+            Math.random() * 100 - 50,
+            Math.random() * 100 - 50,
+            Math.random() * 100 - 50
+          )
+      );
+  }, [numParticles]);
+
+  const points = useMemo(() => particles.map((p) => p.toArray()), [particles]);
 
   return (
-    <group position={[-20, -20, -100]}>
-      {" "}
-      {/* Adjust these values as needed */}
-      {particles.map((particle, index) => (
-        <Particle key={index} position={particle.position} />
+    <>
+      {particles.map((position, index) => (
+        <Particle
+          key={index}
+          position={position.toArray()}
+          cubePosition={
+            cubeRef.current ? cubeRef.current.position.toArray() : [0, 0, 0]
+          }
+        />
       ))}
-    </group>
+      <Line points={points} color="white" />
+    </>
   );
 };
