@@ -46,8 +46,8 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     const navbarHeight = 100;
     const padding = 60;
 
-    const newWidth = Math.max(0, width - padding * 4) / 300;
-    const newHeight = Math.max(0, height - navbarHeight - padding * 2) / 300;
+    const newWidth = Math.max(0, width - padding * 4) / 200;
+    const newHeight = Math.max(0, height - navbarHeight - padding * 2) / 200;
 
     const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
     setCubeSize(newSize);
@@ -66,7 +66,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const scrollData = useScroll();
 
   return (
-    <mesh ref={cubeRef} visible position={[0, 0, -1]}>
+    <mesh ref={cubeRef} visible position={[0, 0, 0]}>
       <boxGeometry args={cubeSize} />
       <meshStandardMaterial color="black" />
       <Html

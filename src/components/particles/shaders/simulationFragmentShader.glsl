@@ -148,7 +148,7 @@ float snoise(vec3 v)
             
             void main(){
                 vec3 pos=texture2D(positions,vUv).rgb;
-                vec3 curlPos=curlNoise(pos*uFrequency+uTime*.1);
+                vec3 curlPos=curlNoise(pos*uFrequency+uTime*.01);
                 
                 // Apply curl noise
                 pos+=curlPos;
@@ -165,7 +165,7 @@ float snoise(vec3 v)
                 
                 // If the particle is inside the box, find the closest face and move it outside
                 if(isInsideBox){
-                    float minDist=100000.;// Large number
+                    float minDist=10000.;// Large number
                     vec3 closestFace;
                     
                     // Check each face of the box and find the closest one
@@ -188,7 +188,7 @@ float snoise(vec3 v)
                     }
                     
                     // Move the particle just outside the closest face
-                    pos+=closestFace*(minDist+.1);// 0.001 is a small offset
+                    pos+=closestFace*(minDist+.1);// Increased offset
                 }
                 
                 gl_FragColor=vec4(pos,1.);

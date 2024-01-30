@@ -112,7 +112,7 @@ export const FBOParticles = ({ cubeRef }: FBOParticlesProps) => {
         </mesh>,
         scene
       )}
-      <points ref={points}>
+      <points ref={points} scale={[5, 5, 5]}>
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
