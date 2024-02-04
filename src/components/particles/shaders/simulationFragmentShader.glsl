@@ -2,24 +2,11 @@ uniform sampler2D positions;
 uniform float uTime;
 uniform float uFrequency;
 
-uniform vec3 boundingBoxMin;
-uniform vec3 boundingBoxMax;
+uniform vec3 obbCenter;
+uniform vec3 obbHalfSize;
+uniform vec4 obbRotation;
 
 varying vec2 vUv;
-
-// Source: https://github.com/drcmda/glsl-curl-noise2
-// and: https://github.com/guoweish/glsl-noise-simplex/blob/master/3d.glsl
-
-//
-// Description : Array and textureless GLSL 2D/3D/4D simplex
-//               noise functions.
-//      Author : Ian McEwan, Ashima Arts.
-//  Maintainer : ijm
-//     Lastmod : 20110822 (ijm)
-//     License : Copyright (C) 2011 Ashima Arts. All rights reserved.
-//               Distributed under the MIT License. See LICENSE file.
-//               https://github.com/ashima/webgl-noise
-//
 
 vec3 mod289(vec3 x){
     return x-floor(x*(1./289.))*289.;
@@ -125,7 +112,7 @@ float snoise(vec3 v)
             
             vec3 curlNoise(vec3 p){
                 
-                const float e=.1;
+                const float e=.08;
                 vec3 dx=vec3(e,0.,0.);
                 vec3 dy=vec3(0.,e,0.);
                 vec3 dz=vec3(0.,0.,e);
@@ -141,79 +128,60 @@ float snoise(vec3 v)
                 float y=p_z1.x-p_z0.x-p_x1.z+p_x0.z;
                 float z=p_x1.y-p_x0.y-p_y1.x+p_y0.x;
                 
-                const float divisor=1./(2.*e);
+                const float divisor=3./(3.*e);
                 return normalize(vec3(x,y,z)*divisor);
                 
             }
             
+            vec3 rotatePositionAroundAxis(vec3 position,vec3 axis,float angle){
+                float cosAngle=cos(angle);
+                float sinAngle=sin(angle);
+                return cosAngle*position+sinAngle*cross(axis,position)+(1.-cosAngle)*dot(axis,position)*axis;
+            }
+            
+            vec3 rotateByQuaternion(vec3 position,vec4 q){
+                vec3 qVec=q.xyz;
+                float qW=q.w;
+                
+                vec3 t=2.*cross(qVec,position);
+                return position+qW*t+cross(qVec,t);
+            }
+            
+            vec3 calculateOBBRepulsion(vec3 particlePos,vec3 obbCenter,vec3 obbHalfSize,vec4 obbRotation,float repulsionRadius){
+                vec3 localPos=rotateByQuaternion(particlePos-obbCenter,obbRotation);
+                vec3 repulsion=vec3(.022);
+                
+                vec3 distance=abs(localPos)-obbHalfSize;
+                
+                if(max(distance.x,max(distance.y,distance.z))<repulsionRadius){
+                    
+                    vec3 repulsionDir=normalize(max(distance,.8));
+                    
+                    float strength=(repulsionRadius-max(distance.x,max(distance.y,distance.z)))/repulsionRadius;
+                    
+                    repulsion=strength*repulsionDir*repulsionRadius;
+                }
+                
+                return rotateByQuaternion(repulsion,obbRotation);
+            }
+            
             void main(){
                 vec3 pos=texture2D(positions,vUv).rgb;
-                vec3 curlPos=curlNoise(pos*uFrequency+uTime*.01);
                 
-                // Apply curl noise
-                pos+=curlPos;
+                vec3 noiseVelocity=curlNoise(pos*uFrequency+uTime*.01);
+                pos+=noiseVelocity*.3;
                 
-                // Bounding Box Logic
-                vec3 boxMin=vec3(boundingBoxMin);
-                vec3 boxMax=vec3(boundingBoxMax);
+                float angle=uTime*.05;
+                vec3 axis=vec3(0,1,0);
+                pos=rotatePositionAroundAxis(pos,axis,angle);
                 
-                // Check if the particle is inside the bounding box
-                bool insideX=pos.x>=boxMin.x&&pos.x<=boxMax.x;
-                bool insideY=pos.y>=boxMin.y&&pos.y<=boxMax.y;
-                bool insideZ=pos.z>=boxMin.z&&pos.z<=boxMax.z;
-                bool isInsideBox=insideX&&insideY&&insideZ;
+                float scale=10.;
+                pos*=scale;
                 
-                // If the particle is inside the box, find the closest face and move it outside
-                if(isInsideBox){
-                    float minDist=10000.;// Large number
-                    vec3 closestFace;
-                    
-                    // Check each face of the box and find the closest one
-                    float[6]distances=float[](
-                        pos.x-boxMin.x,boxMax.x-pos.x,
-                        pos.y-boxMin.y,boxMax.y-pos.y,
-                        pos.z-boxMin.z,boxMax.z-pos.z
-                    );
-                    vec3[6]directions=vec3[](
-                        vec3(-1,0,0),vec3(1,0,0),
-                        vec3(0,-1,0),vec3(0,1,0),
-                        vec3(0,0,-1),vec3(0,0,1)
-                    );
-                    
-                    for(int i=0;i<6;i++){
-                        if(distances[i]<minDist){
-                            minDist=distances[i];
-                            closestFace=directions[i];
-                        }
-                    }
-                    
-                    // Move the particle just outside the closest face
-                    pos+=closestFace*(minDist+.1);// Increased offset
-                }
+                float repulsionRadius=.9;
+                vec3 repulsion=calculateOBBRepulsion(pos,obbCenter,obbHalfSize,obbRotation,repulsionRadius);
+                
+                pos+=repulsion;
                 
                 gl_FragColor=vec4(pos,1.);
             }
-            
-            // void main(){
-                //     vec3 pos=texture2D(positions,vUv).rgb;
-                //     vec3 curlPos=curlNoise(pos*uFrequency+uTime*.1);
-                
-                //     // Apply curl noise
-                //     pos+=curlPos;
-                
-                //     // Bounding Box Logic
-                //     vec3 boxMin=vec3(boundingBoxMin);
-                //     vec3 boxMax=vec3(boundingBoxMax);
-                //     float thresholdDistance=.00000001;// Adjust as needed
-                
-                //     // Repel from or contain within the bounding box
-                //     for(int i=0;i<3;++i){
-                    //         if(pos[i]<boxMin[i]+thresholdDistance){
-                        //             pos[i]=boxMin[i]+thresholdDistance;
-                    //         }else if(pos[i]>boxMax[i]-thresholdDistance){
-                        //             pos[i]=boxMax[i]-thresholdDistance;
-                    //         }
-                //     }
-                
-                //     gl_FragColor=vec4(pos,1.);
-            // }

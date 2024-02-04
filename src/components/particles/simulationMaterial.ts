@@ -37,8 +37,9 @@ class SimulationMaterial extends THREE.ShaderMaterial {
       positions: { value: positionsTexture },
       uFrequency: { value: 0.3 },
       uTime: { value: 0 },
-      boundingBoxMin: { value: new THREE.Vector3() },
-      boundingBoxMax: { value: new THREE.Vector3() },
+      obbCenter: { value: new THREE.Vector3() },
+      obbHalfSize: { value: new THREE.Vector3() },
+      obbRotation: { value: new THREE.Quaternion() },
     };
 
     super({
