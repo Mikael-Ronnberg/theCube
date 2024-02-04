@@ -168,8 +168,8 @@ float snoise(vec3 v)
             void main(){
                 vec3 pos=texture2D(positions,vUv).rgb;
                 
-                vec3 noiseVelocity=curlNoise(pos*uFrequency+uTime*.01);
-                pos+=noiseVelocity*.3;
+                vec3 noiseVelocity=curlNoise(pos*uFrequency+uTime*.07);
+                pos+=noiseVelocity*.1;
                 
                 float angle=uTime*.05;
                 vec3 axis=vec3(0,1,0);
@@ -178,7 +178,7 @@ float snoise(vec3 v)
                 float scale=10.;
                 pos*=scale;
                 
-                float repulsionRadius=.9;
+                float repulsionRadius=1.2;
                 vec3 repulsion=calculateOBBRepulsion(pos,obbCenter,obbHalfSize,obbRotation,repulsionRadius);
                 
                 pos+=repulsion;

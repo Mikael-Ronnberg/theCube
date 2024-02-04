@@ -1,7 +1,7 @@
 import { Html, useScroll } from "@react-three/drei";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
-import { Mesh, PMREMGenerator } from "three";
+import THREE, { Mesh, PMREMGenerator, Vector3 } from "three";
 import useCubeState from "../stores/cubeStore";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 
@@ -12,19 +12,20 @@ interface CubeProps {
 
 export const Cube = ({ cubeRef }: CubeProps) => {
   const { isMoved, setIsMoved } = useCubeState();
-
   const { gl, scene } = useThree();
   const hdrTexture = useLoader(RGBELoader, "/kloppenheim_06_puresky_1k.hdr");
+  const [cubeSize, setCubeSize] = useState<[number, number, number]>([1, 1, 1]);
+  const [htmlPositions, setHtmlPositions] = useState<{
+    [key: string]: [number, number, number];
+  }>({
+    side1: [0, 0, 0.51],
+    side2: [0, 0, 0],
+    side3: [0, 0, 0.51],
+    side4: [0, 0, 0.51],
+  });
 
   const scroll = useScroll();
-  const [cubeSize, setCubeSize] = useState<[number, number, number]>([1, 1, 1]);
-  const [htmlPosition, setHtmlPosition] = useState<[number, number, number]>([
-    0, 0, 0.51,
-  ]);
-
-  const lerpFactor = 0.7;
-  const snapThreshold = 0.1;
-  const snapPoints = [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2, 2 * Math.PI];
+  const totalSides = 4;
 
   useEffect(() => {
     if (!cubeRef.current) return;
@@ -45,55 +46,31 @@ export const Cube = ({ cubeRef }: CubeProps) => {
 
   useFrame(() => {
     if (cubeRef.current) {
-      const rotationFactorX = Math.PI * 2;
-      let targetRotationX = scroll.offset * rotationFactorX;
-
-      const closestSnapPointX = snapPoints.reduce((prev, curr) =>
-        Math.abs(curr - targetRotationX) < Math.abs(prev - targetRotationX)
-          ? curr
-          : prev
+      const sideIndex = Math.floor(scroll.offset * totalSides);
+      const targetRotationX = (sideIndex * Math.PI) / 2;
+      cubeRef.current.rotation.x = lerp(
+        cubeRef.current.rotation.x,
+        targetRotationX,
+        0.05
       );
 
-      if (Math.abs(closestSnapPointX - targetRotationX) < snapThreshold) {
-        targetRotationX = lerp(
-          cubeRef.current.rotation.x,
-          closestSnapPointX,
-          lerpFactor
-        );
-      }
-
-      cubeRef.current.rotation.x = targetRotationX;
-
       if (isMoved) {
-        if (Math.abs(cubeRef.current.position.x - 3.5) > 0.01) {
-          cubeRef.current.position.x = lerp(
-            cubeRef.current.position.x,
-            -3.5,
-            0.05
-          );
-        }
-        if (Math.abs(cubeRef.current.rotation.y - 1.5) > 0.01) {
-          cubeRef.current.rotation.y = lerp(
-            cubeRef.current.rotation.y,
-            1.5,
-            0.05
-          );
-        }
+        const targetRotationY = 1.5;
+        cubeRef.current.rotation.y = lerp(
+          cubeRef.current.rotation.y,
+          targetRotationY,
+          0.05
+        );
+
+        const targetPositionX = -3.5;
+        cubeRef.current.position.x = lerp(
+          cubeRef.current.position.x,
+          targetPositionX,
+          0.05
+        );
       } else {
-        if (Math.abs(cubeRef.current.position.x) > 0.01) {
-          cubeRef.current.position.x = lerp(
-            cubeRef.current.position.x,
-            0,
-            0.05
-          );
-        }
-        if (Math.abs(cubeRef.current.rotation.y) > 0.01) {
-          cubeRef.current.rotation.y = lerp(
-            cubeRef.current.rotation.y,
-            0,
-            0.05
-          );
-        }
+        cubeRef.current.rotation.y = lerp(cubeRef.current.rotation.y, 0, 0.05);
+        cubeRef.current.position.x = lerp(cubeRef.current.position.x, 0, 0.05);
       }
     }
   });
@@ -109,7 +86,14 @@ export const Cube = ({ cubeRef }: CubeProps) => {
 
     const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
     setCubeSize(newSize);
-    setHtmlPosition([0, 0, newSize[2] / 2 + 0.01]);
+    const newHtmlPositions = {
+      side1: [0, 0, newSize[2] / 2 + 0.01] as [number, number, number],
+      side2: [0, 2, newSize[2] / 3 + 1.01] as [number, number, number],
+      side3: [0, 0, newSize[2] / 2 + 0.01] as [number, number, number],
+      side4: [0, 0, newSize[2] / 2 + 0.01] as [number, number, number],
+    };
+
+    setHtmlPositions(newHtmlPositions);
   };
 
   useEffect(() => {
@@ -136,9 +120,9 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         distanceFactor={2.5}
         transform
         portal={{ current: scrollData.fixed }}
-        position={htmlPosition}
+        position={htmlPositions.side1}
       >
-        <span>Hej på er!</span>
+        <span>sida 1</span>
         <button onClick={handleButtonClick}>Click me plz</button>
       </Html>
     </mesh>
