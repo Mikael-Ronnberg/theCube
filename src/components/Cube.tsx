@@ -1,9 +1,10 @@
 import { Html, useScroll } from "@react-three/drei";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
-import THREE, { Mesh, PMREMGenerator, Vector3 } from "three";
+import THREE, { Mesh, PMREMGenerator } from "three";
 import useCubeState from "../stores/cubeStore";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import { AboutPage } from "../pages/AboutPage";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -19,13 +20,13 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     [key: string]: [number, number, number];
   }>({
     side1: [0, 0, 0.51],
-    side2: [0, 0, 0],
+    side2: [0, 0, 0.51],
     side3: [0, 0, 0.51],
     side4: [0, 0, 0.51],
   });
 
   const scroll = useScroll();
-  const totalSides = 4;
+  const totalSides = 3;
 
   useEffect(() => {
     if (!cubeRef.current) return;
@@ -83,14 +84,15 @@ export const Cube = ({ cubeRef }: CubeProps) => {
 
     const newWidth = Math.max(0, width - padding * 4) / 180;
     const newHeight = Math.max(0, height - navbarHeight - padding * 2) / 170;
-
     const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
     setCubeSize(newSize);
+
+    const halfDepth = newSize[2] / 2 + 0.01;
     const newHtmlPositions = {
-      side1: [0, 0, newSize[2] / 2 + 0.01] as [number, number, number],
-      side2: [0, 2, newSize[2] / 3 + 1.01] as [number, number, number],
-      side3: [0, 0, newSize[2] / 2 + 0.01] as [number, number, number],
-      side4: [0, 0, newSize[2] / 2 + 0.01] as [number, number, number],
+      side1: [0, 0, halfDepth] as [number, number, number],
+      side2: [0, halfDepth, 0] as [number, number, number],
+      side3: [0, 0, -halfDepth] as [number, number, number],
+      side4: [0, -halfDepth, 0] as [number, number, number],
     };
 
     setHtmlPositions(newHtmlPositions);
@@ -117,12 +119,45 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <meshStandardMaterial metalness={2} roughness={0} color="black" />
       <Html
         occlude
-        distanceFactor={2.5}
+        distanceFactor={1.5}
         transform
         portal={{ current: scrollData.fixed }}
         position={htmlPositions.side1}
       >
         <span>sida 1</span>
+        <button onClick={handleButtonClick}>Click me plz</button>
+      </Html>
+      <Html
+        occlude
+        distanceFactor={1.5}
+        transform
+        rotation-x={-Math.PI / 2}
+        portal={{ current: scrollData.fixed }}
+        position={htmlPositions.side2}
+      >
+        <AboutPage />
+        <button onClick={handleButtonClick}>Click me plz</button>
+      </Html>
+      <Html
+        occlude
+        distanceFactor={1.5}
+        transform
+        rotation-x={-Math.PI / 1}
+        portal={{ current: scrollData.fixed }}
+        position={htmlPositions.side3}
+      >
+        <span>sida 3</span>
+        <button onClick={handleButtonClick}>Click me plz</button>
+      </Html>
+      <Html
+        occlude
+        distanceFactor={1.5}
+        transform
+        rotation-x={-Math.PI / -2}
+        portal={{ current: scrollData.fixed }}
+        position={htmlPositions.side4}
+      >
+        <span>sida 4</span>
         <button onClick={handleButtonClick}>Click me plz</button>
       </Html>
     </mesh>
