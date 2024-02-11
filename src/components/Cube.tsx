@@ -5,6 +5,8 @@ import THREE, { Mesh, PMREMGenerator } from "three";
 import useCubeState from "../stores/cubeStore";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { AboutPage } from "../pages/AboutPage";
+import { StartPage } from "../pages/StartPage";
+import { ExperiencePage } from "../pages/ExperiencePage";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -124,7 +126,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         portal={{ current: scrollData.fixed }}
         position={htmlPositions.side1}
       >
-        <span>sida 1</span>
+        <StartPage />
         <button onClick={handleButtonClick}>Click me plz</button>
       </Html>
       <Html
@@ -146,7 +148,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         portal={{ current: scrollData.fixed }}
         position={htmlPositions.side3}
       >
-        <span>sida 3</span>
+        <ExperiencePage />
         <button onClick={handleButtonClick}>Click me plz</button>
       </Html>
       <Html
