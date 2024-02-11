@@ -1,0 +1,37 @@
+
+.panel-slide {
+    position: fixed;
+    bottom: 0;
+    right: 0; 
+    width: 50vw;
+    height: 85vh; 
+    background-color: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    transition: transform 0.8s ease; 
+  }
+  
+  .panel-slide.active {
+    transform: translateX(0%);
+  }
+  
+  .panel-slide.inactive {
+    transform: translateX(100%); 
+  }
+  
+
+  @media (max-width: 768px) {
+    .panel-slide {
+      height: 85vh; 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .panel-slide {
+      height: 85vh; 
+    }
+  }
+  

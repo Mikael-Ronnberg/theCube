@@ -2,11 +2,11 @@ import { Html, useScroll } from "@react-three/drei";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import THREE, { Mesh, PMREMGenerator } from "three";
-import useCubeState from "../stores/cubeStore";
+import useCubeState from "../../stores/cubeStore";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
-import { AboutPage } from "../pages/AboutPage";
-import { StartPage } from "../pages/StartPage";
-import { ExperiencePage } from "../pages/ExperiencePage";
+import { AboutPage } from "../../pages/AboutPage";
+import { StartPage } from "../../pages/StartPage";
+import { ExperiencePage } from "../../pages/ExperiencePage";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -79,13 +79,28 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   });
 
   const updateSize = () => {
+    const breakpoints = {
+      mobile: 480,
+      tablet: 768,
+    };
+
     const width = window.innerWidth;
     const height = window.innerHeight;
+    let newWidth, newHeight;
     const navbarHeight = 100;
     const padding = 60;
 
-    const newWidth = Math.max(0, width - padding * 4) / 180;
-    const newHeight = Math.max(0, height - navbarHeight - padding * 2) / 170;
+    if (width <= breakpoints.mobile) {
+      newWidth = Math.max(0, width - padding * 4) / 100;
+      newHeight = Math.max(0, height - navbarHeight - padding * 2) / 90;
+    } else if (width <= breakpoints.tablet) {
+      newWidth = Math.max(0, width - padding * 4) / 140;
+      newHeight = Math.max(0, height - navbarHeight - padding * 2) / 160;
+    } else {
+      newWidth = Math.max(0, width - padding * 4) / 180;
+      newHeight = Math.max(0, height - navbarHeight - padding * 2) / 170;
+    }
+
     const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
     setCubeSize(newSize);
 

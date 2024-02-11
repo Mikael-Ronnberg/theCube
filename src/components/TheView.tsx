@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
-import { Cube } from "./Cube";
+import { Cube } from "./cube/Cube";
 import { Mesh } from "three";
 import { FBOParticles } from "./particles/FBOParticles";
 import useCubeState from "../stores/cubeStore";
-import { Panel } from "./Panel";
+import { Panel } from "./panel/Panel";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
@@ -22,9 +22,9 @@ export const TheView = () => {
         </group>
         <ScrollControls pages={3} damping={0.25} enabled={!isMoved}>
           <Cube cubeRef={cubeRef} />
-          <Panel />
         </ScrollControls>
       </Canvas>
+      <Panel />
     </div>
   );
 };
