@@ -5,7 +5,6 @@ import "./Panel.css";
 export const Panel = () => {
   const panelRef = useRef<HTMLDivElement>(null);
   const { isMoved, setIsMoved } = useCubeState();
-  console.log(panelRef.current);
 
   useEffect(() => {
     const handleClickOutside = (event: PointerEvent) => {
@@ -18,23 +17,22 @@ export const Panel = () => {
       }
     };
 
-    window.addEventListener("pointerdown", handleClickOutside);
+    window.onpointerdown = handleClickOutside;
+
     return () => {
-      window.removeEventListener("pointerdown", handleClickOutside);
+      window.onpointerdown = null;
     };
-  }, [setIsMoved]);
+  }, [isMoved, setIsMoved]);
 
   return (
-    <>
-      <div
-        ref={panelRef}
-        className={`panel-slide ${isMoved ? "active" : "inactive"}`}
-      >
-        <div>
-          <h2>Some Text</h2>
-          <p> </p>
-        </div>
+    <div
+      ref={panelRef}
+      className={`panel-slide ${isMoved ? "active" : "inactive"}`}
+    >
+      <div>
+        <h2>Some Text</h2>
+        <p> </p>
       </div>
-    </>
+    </div>
   );
 };
