@@ -27,7 +27,6 @@ export const TheView = () => {
         <Canvas style={{ background: "black" }}>
           <pointLight intensity={1} position={[2, 10, 10]} />
           <ambientLight intensity={2.5} />
-          <OrbitControls enableZoom={false} enableRotate={false} />
           <group position={[0, 0, 0]}>
             <FBOParticles cubeRef={cubeRef} />
           </group>
