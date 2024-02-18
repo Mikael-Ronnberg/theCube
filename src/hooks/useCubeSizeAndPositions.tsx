@@ -20,13 +20,13 @@ export const useCubeSizeAndPositions = () => {
       const padding = 60;
 
       if (width <= breakpoints.mobile) {
-        newWidth = Math.max(0, width - padding * 4) / 110;
-        newHeight = Math.max(0, height - navbarHeight - padding * 2) / 110;
-      } else if (width <= breakpoints.tablet) {
-        newWidth = Math.max(0, width - padding * 4) / 140;
+        newWidth = Math.max(0, width - padding * 2) / 170;
         newHeight = Math.max(0, height - navbarHeight - padding * 2) / 160;
+      } else if (width <= breakpoints.tablet) {
+        newWidth = Math.max(0, width - padding * 2) / 175;
+        newHeight = Math.max(0, height - navbarHeight - padding * 2) / 165;
       } else {
-        newWidth = Math.max(0, width - padding * 4) / 180;
+        newWidth = Math.max(0, width - padding * 2) / 180;
         newHeight = Math.max(0, height - navbarHeight - padding * 2) / 170;
       }
 
