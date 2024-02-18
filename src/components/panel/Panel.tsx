@@ -14,12 +14,12 @@ export const Panel = () => {
         setIsMoved(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
+    window.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("touchstart", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
+      window.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("touchstart", handleClickOutside);
     };
   }, [setIsMoved]);
 
