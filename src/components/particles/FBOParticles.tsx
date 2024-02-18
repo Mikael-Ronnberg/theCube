@@ -8,6 +8,7 @@ import SimulationMaterial from "./simulationMaterial";
 import vertexShader from "./shaders/vertexShader.glsl?raw";
 import fragmentShader from "./shaders/fragmentShader.glsl?raw";
 import { OBB } from "three/examples/jsm/math/OBB.js";
+import React from "react";
 
 extend({ SimulationMaterial: SimulationMaterial });
 
@@ -15,7 +16,7 @@ interface FBOParticlesProps {
   cubeRef: React.RefObject<THREE.Mesh>;
 }
 
-export const FBOParticles = ({ cubeRef }: FBOParticlesProps) => {
+const FBOParticlesComponent = ({ cubeRef }: FBOParticlesProps) => {
   const size = 128;
   const points = useRef<THREE.Points>(null);
   const simulationMaterialRef = useRef<SimulationMaterial>(null);
@@ -215,3 +216,5 @@ export const FBOParticles = ({ cubeRef }: FBOParticlesProps) => {
     </>
   );
 };
+
+export const FBOParticles = React.memo(FBOParticlesComponent);

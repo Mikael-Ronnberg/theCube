@@ -1,8 +1,10 @@
+import { NormalHeader } from "../../components/ui/headerStyles";
+
 export const AboutPage = () => {
   return (
     <>
       <div>
-        <h2>Overview</h2>
+        <NormalHeader>Overview</NormalHeader>
       </div>
 
       <p>
