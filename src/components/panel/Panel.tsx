@@ -9,11 +9,8 @@ export const Panel = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
-      if (
-        isMoved &&
-        panelRef.current &&
-        !panelRef.current.contains(event.target as Node)
-      ) {
+      const target = event.target as Node;
+      if (isMoved && panelRef.current && !panelRef.current.contains(target)) {
         setIsMoved(false);
       }
     };
