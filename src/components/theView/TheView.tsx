@@ -19,7 +19,7 @@ export const TheView = () => {
       <div
         style={{
           width: "100vw",
-          height: "100vh",
+          height: "100svh",
           zIndex: 1,
         }}
       >
