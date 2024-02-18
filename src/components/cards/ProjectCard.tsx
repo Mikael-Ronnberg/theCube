@@ -1,5 +1,7 @@
-import { ProjectCardHeader } from "../ui/headerStyles";
-import { ProjectCardContainer } from "./projectCard/projectCardStyles";
+import {
+  ProjectCardContainer,
+  ProjectCardHeader,
+} from "./projectCard/projectCardStyles";
 
 type ProjectCardProps = {
   titel: string;

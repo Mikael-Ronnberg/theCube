@@ -4,11 +4,11 @@ import { Mesh } from "three";
 import useCubeState from "../../stores/cubeStore";
 import { AboutPage } from "../../pages/about/AboutPage";
 import { StartPage } from "../../pages/home/StartPage";
-import { ExperiencePage } from "../../pages/works/ExperiencePage";
 import { useCubeSizeAndPositions } from "../../hooks/useCubeSizeAndPositions";
 import { useEnvironmentSetup } from "../../hooks/useEnvironmentSetup";
 import { useRef, useState } from "react";
 import useNavStore from "../../stores/navStore";
+import { ProjectsPage } from "../../pages/projects/ProjectsPage";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -119,7 +119,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         portal={{ current: scroll.fixed }}
         position={htmlPositions.side3}
       >
-        <ExperiencePage />
+        <ProjectsPage />
         <button onClick={() => handleButtonClick("side3")}>Click me plz</button>
       </Html>
       <Html

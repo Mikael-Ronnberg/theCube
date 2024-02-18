@@ -18,7 +18,6 @@ export const TheView = () => {
       <div className="c-container">
         <Navbar />
         <Canvas className="can">
-          <pointLight intensity={1} position={[2, 10, 10]} />
           <ambientLight intensity={2.5} />
           <group position={[0, 0, 0]}>
             <FBOParticles cubeRef={cubeRef} />
