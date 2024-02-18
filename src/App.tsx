@@ -1,4 +1,4 @@
-import { TheView } from "./components/TheView";
+import { TheView } from "./components/theView/TheView";
 
 function App() {
   return (

@@ -1,12 +1,14 @@
 import { Html, useScroll } from "@react-three/drei";
-import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useEffect, useState } from "react";
-import THREE, { Mesh, PMREMGenerator } from "three";
+import { useFrame } from "@react-three/fiber";
+
+import { Mesh } from "three";
 import useCubeState from "../../stores/cubeStore";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+
 import { AboutPage } from "../../pages/AboutPage";
 import { StartPage } from "../../pages/StartPage";
 import { ExperiencePage } from "../../pages/ExperiencePage";
+import { useCubeSizeAndPositions } from "../../hooks/useCubeSizeAndPositions";
+import { useEnvironmentSetup } from "../../hooks/useEnvironmentSetup";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -15,37 +17,12 @@ interface CubeProps {
 
 export const Cube = ({ cubeRef }: CubeProps) => {
   const { isMoved, setIsMoved } = useCubeState();
-  const { gl, scene } = useThree();
-  const hdrTexture = useLoader(RGBELoader, "/kloppenheim_06_puresky_1k.hdr");
-  const [cubeSize, setCubeSize] = useState<[number, number, number]>([1, 1, 1]);
-  const [htmlPositions, setHtmlPositions] = useState<{
-    [key: string]: [number, number, number];
-  }>({
-    side1: [0, 0, 0.51],
-    side2: [0, 0, 0.51],
-    side3: [0, 0, 0.51],
-    side4: [0, 0, 0.51],
-  });
+  const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
 
   const scroll = useScroll();
   const totalSides = 3;
 
-  useEffect(() => {
-    if (!cubeRef.current) return;
-
-    const pmremGenerator = new PMREMGenerator(gl);
-    pmremGenerator.compileEquirectangularShader();
-    const envMap = pmremGenerator.fromEquirectangular(hdrTexture).texture;
-
-    const material = cubeRef.current.material as THREE.MeshStandardMaterial;
-    material.envMap = envMap;
-    material.needsUpdate = true;
-
-    return () => {
-      pmremGenerator.dispose();
-      hdrTexture.dispose();
-    };
-  }, [hdrTexture, gl, scene]);
+  useEnvironmentSetup(cubeRef);
 
   useFrame(() => {
     if (cubeRef.current) {
@@ -77,52 +54,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       }
     }
   });
-
-  const updateSize = () => {
-    const breakpoints = {
-      mobile: 480,
-      tablet: 768,
-    };
-
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    let newWidth, newHeight;
-    const navbarHeight = 100;
-    const padding = 60;
-
-    if (width <= breakpoints.mobile) {
-      newWidth = Math.max(0, width - padding * 4) / 100;
-      newHeight = Math.max(0, height - navbarHeight - padding * 2) / 90;
-    } else if (width <= breakpoints.tablet) {
-      newWidth = Math.max(0, width - padding * 4) / 140;
-      newHeight = Math.max(0, height - navbarHeight - padding * 2) / 160;
-    } else {
-      newWidth = Math.max(0, width - padding * 4) / 180;
-      newHeight = Math.max(0, height - navbarHeight - padding * 2) / 170;
-    }
-
-    const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
-    setCubeSize(newSize);
-
-    const halfDepth = newSize[2] / 2 + 0.01;
-    const newHtmlPositions = {
-      side1: [0, 0, halfDepth] as [number, number, number],
-      side2: [0, halfDepth, 0] as [number, number, number],
-      side3: [0, 0, -halfDepth] as [number, number, number],
-      side4: [0, -halfDepth, 0] as [number, number, number],
-    };
-
-    setHtmlPositions(newHtmlPositions);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateSize);
-    updateSize();
-
-    return () => {
-      window.removeEventListener("resize", updateSize);
-    };
-  }, []);
 
   const scrollData = useScroll();
 

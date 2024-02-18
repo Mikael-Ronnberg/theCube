@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
-import { Cube } from "./cube/Cube";
+import { Cube } from "../cube/Cube";
 import { Mesh } from "three";
-import { FBOParticles } from "./particles/FBOParticles";
-import useCubeState from "../stores/cubeStore";
-import { Panel } from "./panel/Panel";
+import { FBOParticles } from "../particles/FBOParticles";
+import useCubeState from "../../stores/cubeStore";
+import { Panel } from "../panel/Panel";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
