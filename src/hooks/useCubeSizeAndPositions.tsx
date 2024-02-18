@@ -20,8 +20,8 @@ export const useCubeSizeAndPositions = () => {
       const padding = 60;
 
       if (width <= breakpoints.mobile) {
-        newWidth = Math.max(0, width - padding * 2) / 160;
-        newHeight = Math.max(0, height - navbarHeight - padding * 2) / 150;
+        newWidth = Math.max(0, width - padding * 2) / 140;
+        newHeight = Math.max(0, height - navbarHeight - padding * 2) / 140;
       } else if (width <= breakpoints.tablet) {
         newWidth = Math.max(0, width - padding * 2) / 175;
         newHeight = Math.max(0, height - navbarHeight - padding * 2) / 165;
