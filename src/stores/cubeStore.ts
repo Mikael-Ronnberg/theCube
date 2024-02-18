@@ -1,13 +1,15 @@
 import { create } from "zustand";
 
-interface CubeState {
+type CubeState = {
   isMoved: boolean;
+  activeSide: string;
   setIsMoved: (isMoved: boolean) => void;
-}
+  setActiveSide: (activeSide: string) => void;
+};
 
-const useCubeState = create<CubeState>((set) => ({
+export const useCubeState = create<CubeState>((set) => ({
   isMoved: false,
+  activeSide: "",
   setIsMoved: (isMoved: boolean) => set({ isMoved }),
+  setActiveSide: (activeSide: string) => set({ activeSide }),
 }));
-
-export default useCubeState;

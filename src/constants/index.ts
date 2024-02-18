@@ -159,7 +159,7 @@ const projects = [
       },
     ],
     image: ppd,
-    source_code_link: "https://github.com/Mikael-Ronnberg/Yet-Another-Webshop",
+    code_link: "https://github.com/Mikael-Ronnberg/Yet-Another-Webshop",
   },
   {
     name: "Todo List",
@@ -176,7 +176,7 @@ const projects = [
       },
     ],
     image: todo,
-    source_code_link: "https://github.com/Mikael-Ronnberg/Todo-List",
+    code_link: "https://github.com/Mikael-Ronnberg/Todo-List",
   },
   {
     name: "Svepa Botten",
@@ -196,8 +196,8 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    // image: SB,
-    source_code_link: "https://github.com/Mikael-Ronnberg/TicTacToe-React",
+    image: design,
+    code_link: "https://github.com/Mikael-Ronnberg/TicTacToe-React",
   },
   {
     name: "From Design to Web",
@@ -214,7 +214,7 @@ const projects = [
       },
     ],
     image: design,
-    source_code_link: "https://github.com/Mikael-Ronnberg/Design",
+    code_link: "https://github.com/Mikael-Ronnberg/Design",
   },
 ];
 

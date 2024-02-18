@@ -4,18 +4,20 @@ import { ScrollControls } from "@react-three/drei";
 import { Cube } from "../cube/Cube";
 import { Mesh } from "three";
 import { FBOParticles } from "../particles/FBOParticles";
-import useCubeState from "../../stores/cubeStore";
+import { useCubeState } from "../../stores/cubeStore";
 import { Panel } from "../panel/Panel";
 import { Navbar } from "../navbar/Navbar";
 import "./TheView.css";
+import { useDisplayComponentState } from "../../stores/displayComponentStore";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
   const { isMoved } = useCubeState();
+  const { currentComponent } = useDisplayComponentState();
 
   return (
     <>
-      <div className="c-container">
+      <div className="view-container">
         <Navbar />
         <Canvas className="can">
           <ambientLight intensity={2.5} />
@@ -32,7 +34,7 @@ export const TheView = () => {
             <Cube cubeRef={cubeRef} />
           </ScrollControls>
         </Canvas>
-        <Panel />
+        <Panel component={currentComponent} />
       </div>
     </>
   );

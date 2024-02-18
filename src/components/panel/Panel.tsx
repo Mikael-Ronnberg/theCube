@@ -1,8 +1,12 @@
-import { useRef, useEffect } from "react";
-import useCubeState from "../../stores/cubeStore";
+import { useRef, useEffect, ReactElement } from "react";
+import { useCubeState } from "../../stores/cubeStore";
 import "./Panel.css";
 
-export const Panel = () => {
+type PanelProps = {
+  component?: ReactElement;
+};
+
+export const Panel = ({ component }: PanelProps) => {
   const panelRef = useRef<HTMLDivElement>(null);
   const { isMoved, setIsMoved } = useCubeState();
 
@@ -29,10 +33,7 @@ export const Panel = () => {
       ref={panelRef}
       className={`panel-slide ${isMoved ? "active" : "inactive"}`}
     >
-      <div>
-        <h2>Some Text</h2>
-        <p> </p>
-      </div>
+      <div>{component}</div>
     </div>
   );
 };

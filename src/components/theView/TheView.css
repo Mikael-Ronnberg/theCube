@@ -7,7 +7,7 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-.c-container {
+.view-container {
     width: 100vw;
     height: 100svh;
     max-height: 100svh;

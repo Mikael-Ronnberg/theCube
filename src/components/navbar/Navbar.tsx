@@ -1,4 +1,4 @@
-import useNavStore from "../../stores/navStore";
+import { useNavStore } from "../../stores/navStore";
 import { NavbarContainer } from "./navbarStyles";
 
 export const Navbar = () => {
