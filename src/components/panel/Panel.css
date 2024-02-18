@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     overflow: auto;
-    transition: transform 0.8s ease; 
+    transition: transform 0.9s ease; 
     border-left: 2px solid skyblue;
     border-radius: 2%;
     box-shadow: 0px 10px 8px 0px skyblue;
@@ -24,19 +24,21 @@
   }
   
   .panel-slide.inactive {
-    transform: translateX(100%); 
+    transform: translateX(110%); 
   }
   
 
   @media (max-width: 768px) {
     .panel-slide {
       height: 85vh; 
+      width: 60vw;
     }
   }
   
   @media (max-width: 480px) {
     .panel-slide {
       height: 85vh; 
+      width: 62vw;
     }
   }
   

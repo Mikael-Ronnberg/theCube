@@ -32,7 +32,7 @@ export const Panel = () => {
       >
         <div>
           <h2>Some Text</h2>
-          <p>Your dynamic content here...</p>
+          <p> </p>
         </div>
       </div>
     </>
