@@ -8,7 +8,7 @@ export const Panel = () => {
   console.log(panelRef.current);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: Event) => {
       if (
         isMoved &&
         panelRef.current &&
@@ -17,10 +17,12 @@ export const Panel = () => {
         setIsMoved(false);
       }
     };
-    window.addEventListener("click", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
 
     return () => {
-      window.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, [setIsMoved]);
 
