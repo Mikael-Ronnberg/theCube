@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, ScrollControls } from "@react-three/drei";
+import { ScrollControls } from "@react-three/drei";
 import { Cube } from "../cube/Cube";
 import { Mesh } from "three";
 import { FBOParticles } from "../particles/FBOParticles";
