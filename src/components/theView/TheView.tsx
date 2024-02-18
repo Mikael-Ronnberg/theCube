@@ -6,8 +6,8 @@ import { Mesh } from "three";
 import { FBOParticles } from "../particles/FBOParticles";
 import useCubeState from "../../stores/cubeStore";
 import { Panel } from "../panel/Panel";
-import "./TheView.css";
 import { Navbar } from "../navbar/Navbar";
+import "./TheView.css";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
@@ -15,15 +15,9 @@ export const TheView = () => {
 
   return (
     <>
-      <Navbar />
-      <div
-        style={{
-          width: "100vw",
-          height: "100svh",
-          zIndex: 1,
-        }}
-      >
-        <Canvas style={{ background: "black" }}>
+      <div className="c-container">
+        <Navbar />
+        <Canvas className="can">
           <pointLight intensity={1} position={[2, 10, 10]} />
           <ambientLight intensity={2.5} />
           <group position={[0, 0, 0]}>

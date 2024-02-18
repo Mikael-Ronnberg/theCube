@@ -6,3 +6,13 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+.c-container {
+    width: 100vw;
+    height: 100svh;
+    z-index: 1;
+} 
+
+.can {
+    background: black;
+}

@@ -5,7 +5,7 @@
     right: 0; 
     z-index: 20;
     width: 50vw;
-    height: 85vh; 
+    height: 85svh; 
     backdrop-filter: blur(2px);
     background-color: rgba(0, 0, 0, 0.1); 
     display: flex;
@@ -30,14 +30,14 @@
 
   @media (max-width: 768px) {
     .panel-slide {
-      height: 85vh; 
+      height: 85svh; 
       width: 60vw;
     }
   }
   
   @media (max-width: 480px) {
     .panel-slide {
-      height: 85vh; 
+      height: 85svh; 
       width: 62vw;
     }
   }
