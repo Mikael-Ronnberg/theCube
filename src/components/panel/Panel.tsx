@@ -8,18 +8,19 @@ export const Panel = () => {
   console.log(panelRef.current);
 
   useEffect(() => {
-    const handleClickOutside = (event: Event) => {
-      const target = event.target as Node;
-      if (isMoved && panelRef.current && !panelRef.current.contains(target)) {
+    const handleClickOutside = (event: PointerEvent) => {
+      if (
+        isMoved &&
+        panelRef.current &&
+        !panelRef.current.contains(event.target as Node)
+      ) {
         setIsMoved(false);
       }
     };
-    window.addEventListener("mousedown", handleClickOutside);
-    window.addEventListener("touchstart", handleClickOutside);
 
+    window.addEventListener("pointerdown", handleClickOutside);
     return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-      window.removeEventListener("touchstart", handleClickOutside);
+      window.removeEventListener("pointerdown", handleClickOutside);
     };
   }, [setIsMoved]);
 
