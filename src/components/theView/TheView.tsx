@@ -6,25 +6,36 @@ import { Mesh } from "three";
 import { FBOParticles } from "../particles/FBOParticles";
 import useCubeState from "../../stores/cubeStore";
 import { Panel } from "../panel/Panel";
+import "./TheView.css";
+import { Navbar } from "../navbar/Navbar";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
   const { isMoved } = useCubeState();
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <Canvas style={{ background: "black" }}>
-        <pointLight intensity={1} position={[2, 10, 10]} />
-        <ambientLight intensity={2.5} />
-        <OrbitControls enableZoom={false} />
-        <group position={[0, 0, 0]}>
-          <FBOParticles cubeRef={cubeRef} />
-        </group>
-        <ScrollControls pages={3} damping={0.25} enabled={!isMoved}>
-          <Cube cubeRef={cubeRef} />
-        </ScrollControls>
-      </Canvas>
-      <Panel />
-    </div>
+    <>
+      <Navbar />
+      <div style={{ width: "100vw", height: "100vh" }}>
+        <Canvas style={{ background: "black" }}>
+          <pointLight intensity={1} position={[2, 10, 10]} />
+          <ambientLight intensity={2.5} />
+          <OrbitControls enableZoom={false} />
+          <group position={[0, 0, 0]}>
+            <FBOParticles cubeRef={cubeRef} />
+          </group>
+          <ScrollControls
+            pages={4}
+            damping={0.3}
+            enabled={!isMoved}
+            maxSpeed={0.4}
+            distance={2}
+          >
+            <Cube cubeRef={cubeRef} />
+          </ScrollControls>
+        </Canvas>
+        <Panel />
+      </div>
+    </>
   );
 };

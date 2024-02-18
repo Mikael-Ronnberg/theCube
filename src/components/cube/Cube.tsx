@@ -1,15 +1,14 @@
 import { Html, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-
 import { Mesh } from "three";
 import useCubeState from "../../stores/cubeStore";
-
 import { AboutPage } from "../../pages/AboutPage";
 import { StartPage } from "../../pages/StartPage";
 import { ExperiencePage } from "../../pages/ExperiencePage";
 import { useCubeSizeAndPositions } from "../../hooks/useCubeSizeAndPositions";
 import { useEnvironmentSetup } from "../../hooks/useEnvironmentSetup";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useNavStore from "../../stores/navStore";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -20,20 +19,27 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const [activeSide, setActiveSide] = useState<string | null>(null);
   const { isMoved, setIsMoved } = useCubeState();
   const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
+  const { activeSideIndex, setActiveSideIndex } = useNavStore();
   const scroll = useScroll();
-  const totalSides = 3;
+  const totalSides = 4;
+  const lastSideIndex = useRef(activeSideIndex);
 
   useEnvironmentSetup(cubeRef);
 
   useFrame(() => {
+    const scrollSideIndex = Math.floor(scroll.offset * totalSides);
+    if (scrollSideIndex !== lastSideIndex.current) {
+      setActiveSideIndex(scrollSideIndex);
+      lastSideIndex.current = scrollSideIndex;
+    }
+
     if (cubeRef.current) {
-      const sideIndex = Math.floor(scroll.offset * totalSides);
-      let targetRotationX = (sideIndex * Math.PI) / 2;
+      const targetRotationX = (activeSideIndex * Math.PI) / 2;
 
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
         targetRotationX,
-        0.05
+        0.07
       );
 
       if (isMoved) {
@@ -41,18 +47,15 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         let targetPositionX = 0;
         switch (activeSide) {
           case "side1":
-            targetRotationX = (sideIndex * Math.PI) / 2;
             targetRotationY = 1.5;
             targetPositionX = -3.5;
 
             break;
           case "side2":
-            targetRotationX = (sideIndex * Math.PI) / 2;
             targetRotationY = 1.57;
             targetPositionX = -3.5;
             break;
           case "side3":
-            targetRotationX = (sideIndex * Math.PI) / 2;
             targetRotationY = -1.5;
             targetPositionX = -3.5;
             break;
@@ -78,14 +81,10 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     }
   });
 
-  const scrollData = useScroll();
-
   const handleButtonClick = (side: string) => {
     setIsMoved(!isMoved);
     setActiveSide(side);
   };
-
-  console.log(isMoved);
 
   return (
     <mesh ref={cubeRef} visible position={[0, -0.3, 0]}>
@@ -95,7 +94,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         occlude
         distanceFactor={1.5}
         transform
-        portal={{ current: scrollData.fixed }}
+        portal={{ current: scroll.fixed }}
         position={htmlPositions.side1}
       >
         <StartPage />
@@ -106,7 +105,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         distanceFactor={1.5}
         transform
         rotation-x={-Math.PI / 2}
-        portal={{ current: scrollData.fixed }}
+        portal={{ current: scroll.fixed }}
         position={htmlPositions.side2}
       >
         <AboutPage />
@@ -117,7 +116,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         distanceFactor={1.5}
         transform
         rotation-x={-Math.PI / 1}
-        portal={{ current: scrollData.fixed }}
+        portal={{ current: scroll.fixed }}
         position={htmlPositions.side3}
       >
         <ExperiencePage />
@@ -128,7 +127,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         distanceFactor={1.5}
         transform
         rotation-x={-Math.PI / -2}
-        portal={{ current: scrollData.fixed }}
+        portal={{ current: scroll.fixed }}
         position={htmlPositions.side4}
       >
         <span>sida 4</span>
