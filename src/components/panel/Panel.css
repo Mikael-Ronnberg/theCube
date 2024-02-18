@@ -12,6 +12,8 @@
     align-items: center;
     overflow: auto;
     transition: transform 0.8s ease; 
+    border-left: 2px solid purple;
+    border-radius: 3%
   }
   
   .panel-slide.active {

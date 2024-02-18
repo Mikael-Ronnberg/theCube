@@ -16,7 +16,7 @@ export const TheView = () => {
   return (
     <>
       <Navbar />
-      <div style={{ width: "100vw", height: "100vh" }}>
+      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
         <Canvas style={{ background: "black" }}>
           <pointLight intensity={1} position={[2, 10, 10]} />
           <ambientLight intensity={2.5} />
