@@ -9,6 +9,7 @@ import { StartPage } from "../../pages/StartPage";
 import { ExperiencePage } from "../../pages/ExperiencePage";
 import { useCubeSizeAndPositions } from "../../hooks/useCubeSizeAndPositions";
 import { useEnvironmentSetup } from "../../hooks/useEnvironmentSetup";
+import { useState } from "react";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -16,9 +17,9 @@ interface CubeProps {
 }
 
 export const Cube = ({ cubeRef }: CubeProps) => {
+  const [activeSide, setActiveSide] = useState<string | null>(null);
   const { isMoved, setIsMoved } = useCubeState();
   const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
-
   const scroll = useScroll();
   const totalSides = 3;
 
@@ -27,7 +28,8 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   useFrame(() => {
     if (cubeRef.current) {
       const sideIndex = Math.floor(scroll.offset * totalSides);
-      const targetRotationX = (sideIndex * Math.PI) / 2;
+      let targetRotationX = (sideIndex * Math.PI) / 2;
+
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
         targetRotationX,
@@ -35,14 +37,35 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       );
 
       if (isMoved) {
-        const targetRotationY = 1.5;
+        let targetRotationY = 0;
+        let targetPositionX = 0;
+        switch (activeSide) {
+          case "side1":
+            targetRotationX = (sideIndex * Math.PI) / 2;
+            targetRotationY = 1.5;
+            targetPositionX = -3.5;
+
+            break;
+          case "side2":
+            targetRotationX = (sideIndex * Math.PI) / 2;
+            targetRotationY = 1.57;
+            targetPositionX = -3.5;
+            break;
+          case "side3":
+            targetRotationX = (sideIndex * Math.PI) / 2;
+            targetRotationY = -1.5;
+            targetPositionX = -3.5;
+            break;
+          case "side4":
+            targetRotationY = -1.57;
+            targetPositionX = -3.5;
+            break;
+        }
         cubeRef.current.rotation.y = lerp(
           cubeRef.current.rotation.y,
           targetRotationY,
           0.05
         );
-
-        const targetPositionX = -3.5;
         cubeRef.current.position.x = lerp(
           cubeRef.current.position.x,
           targetPositionX,
@@ -57,9 +80,12 @@ export const Cube = ({ cubeRef }: CubeProps) => {
 
   const scrollData = useScroll();
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (side: string) => {
     setIsMoved(!isMoved);
+    setActiveSide(side);
   };
+
+  console.log(isMoved);
 
   return (
     <mesh ref={cubeRef} visible position={[0, -0.3, 0]}>
@@ -73,7 +99,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side1}
       >
         <StartPage />
-        <button onClick={handleButtonClick}>Click me plz</button>
+        <button onClick={() => handleButtonClick("side1")}>Click me plz</button>
       </Html>
       <Html
         occlude
@@ -84,7 +110,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side2}
       >
         <AboutPage />
-        <button onClick={handleButtonClick}>Click me plz</button>
+        <button onClick={() => handleButtonClick("side2")}>Click me plz</button>
       </Html>
       <Html
         occlude
@@ -95,7 +121,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side3}
       >
         <ExperiencePage />
-        <button onClick={handleButtonClick}>Click me plz</button>
+        <button onClick={() => handleButtonClick("side3")}>Click me plz</button>
       </Html>
       <Html
         occlude
@@ -106,7 +132,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side4}
       >
         <span>sida 4</span>
-        <button onClick={handleButtonClick}>Click me plz</button>
+        <button onClick={() => handleButtonClick("side4")}>Click me plz</button>
       </Html>
     </mesh>
   );

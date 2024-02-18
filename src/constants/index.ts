@@ -122,7 +122,7 @@ const experiences = [
       "Work methodology for developers - versionmanagement system, refractor code",
       "UX/Usability - Design from wireframes, Interfacemanagement, Figma",
       "Graphical tools for interface design - Figma, PS,color- och typography",
-      "Internship 1 - Svensk porträttfoto/Bildhistoria -mainly working with React/typescript and bootstrap/styled components",
+      "Internship 1 & 2 - Svensk porträttfoto/Bildhistoria -mainly working with React/typescript and bootstrap/styled components",
     ],
   },
   {
@@ -178,27 +178,31 @@ const projects = [
     image: todo,
     source_code_link: "https://github.com/Mikael-Ronnberg/Todo-List",
   },
-  // {
-  //   name: "TicTacToe",
-  //   description:
-  //     "Classic Tic Tac Toe game in React. Also an assignment we did in Javascript course. Basic and in dire need of better styling. But overall I like the colors.",
-  //   tags: [
-  //     {
-  //       name: "react",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "scss",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: tictactoe,
-  //   source_code_link: "https://github.com/Mikael-Ronnberg/TicTacToe-React",
-  // },
+  {
+    name: "Svepa Botten",
+    description:
+      "This is my degree project where we demonstrate everything we've learned through our education. It is by far the most extensive work I've done and also the project I'm most proud of. Due to time limit I didn't have time to implement everything I planned, so there is much room for improvement. But I'm really glad with the result!",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "zustand",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "chakraUI",
+        color: "pink-text-gradient",
+      },
+    ],
+    // image: SB,
+    source_code_link: "https://github.com/Mikael-Ronnberg/TicTacToe-React",
+  },
   {
     name: "From Design to Web",
     description:
-      "This website was built using a wireframe design as an assignment from our basic HTML/CSS course. It was fun and hard at the same time.",
+      "This website was built using a wireframe design as an assignment from our basic HTML/CSS course. Even if it was our first assignement, it was fun and hard at the same time. It is also fun to see how much I've improved since making this.",
     tags: [
       {
         name: "js",
