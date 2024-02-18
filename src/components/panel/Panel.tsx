@@ -18,9 +18,9 @@ export const Panel = () => {
       }
     };
 
-    window.addEventListener("pointerdown", handleClickOutside);
+    document.addEventListener("pointerdown", handleClickOutside);
     return () => {
-      window.removeEventListener("pointerdown", handleClickOutside);
+      document.removeEventListener("pointerdown", handleClickOutside);
     };
   }, [setIsMoved]);
 
