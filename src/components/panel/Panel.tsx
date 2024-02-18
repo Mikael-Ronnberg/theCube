@@ -17,10 +17,10 @@ export const Panel = () => {
         setIsMoved(false);
       }
     };
-    window.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("click", handleClickOutside);
 
     return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("click", handleClickOutside);
     };
   }, [setIsMoved]);
 
