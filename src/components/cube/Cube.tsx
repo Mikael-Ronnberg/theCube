@@ -20,16 +20,33 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
   const { activeSideIndex, setActiveSideIndex } = useNavStore();
   const scroll = useScroll();
-  const totalSides = 4;
+  const totalSides = 3;
   const lastSideIndex = useRef(activeSideIndex);
 
   useEnvironmentSetup(cubeRef);
 
+  console.log(activeSideIndex);
+
   useFrame(() => {
     const scrollSideIndex = Math.floor(scroll.offset * totalSides);
-    if (scrollSideIndex !== lastSideIndex.current) {
-      setActiveSideIndex(scrollSideIndex);
-      lastSideIndex.current = scrollSideIndex;
+
+    let newSideIndex = lastSideIndex.current;
+
+    if (
+      scrollSideIndex > lastSideIndex.current &&
+      scrollSideIndex - lastSideIndex.current === 1
+    ) {
+      newSideIndex = lastSideIndex.current + 1;
+    } else if (
+      scrollSideIndex < lastSideIndex.current &&
+      lastSideIndex.current - scrollSideIndex === 1
+    ) {
+      newSideIndex = lastSideIndex.current - 1;
+    }
+
+    if (newSideIndex !== lastSideIndex.current) {
+      setActiveSideIndex(newSideIndex);
+      lastSideIndex.current = newSideIndex;
     }
 
     if (cubeRef.current) {
@@ -38,7 +55,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
         targetRotationX,
-        0.07
+        0.08
       );
 
       if (isMoved) {
