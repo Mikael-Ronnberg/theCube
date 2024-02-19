@@ -33,7 +33,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     }
 
     if (cubeRef.current) {
-      const targetRotationX = (activeSideIndex * Math.PI) / 2;
+      const targetRotationX = -(activeSideIndex * Math.PI) / 2;
 
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
