@@ -9,6 +9,7 @@ import { useEnvironmentSetup } from "../../hooks/useEnvironmentSetup";
 import { useRef } from "react";
 import { useNavStore } from "../../stores/navStore";
 import { ProjectsPage } from "../../pages/projects/ProjectsPage";
+import { ContactPage } from "../../pages/contact/ContactPage";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -24,8 +25,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const lastSideIndex = useRef(activeSideIndex);
 
   useEnvironmentSetup(cubeRef);
-
-  console.log(activeSideIndex);
 
   useFrame(() => {
     const scrollSideIndex = Math.floor(scroll.offset * totalSides);
@@ -55,7 +54,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
         targetRotationX,
-        0.08
+        0.3
       );
 
       if (isMoved) {
@@ -83,16 +82,16 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         cubeRef.current.rotation.y = lerp(
           cubeRef.current.rotation.y,
           targetRotationY,
-          0.05
+          0.1
         );
         cubeRef.current.position.x = lerp(
           cubeRef.current.position.x,
           targetPositionX,
-          0.05
+          0.1
         );
       } else {
-        cubeRef.current.rotation.y = lerp(cubeRef.current.rotation.y, 0, 0.05);
-        cubeRef.current.position.x = lerp(cubeRef.current.position.x, 0, 0.05);
+        cubeRef.current.rotation.y = lerp(cubeRef.current.rotation.y, 0, 0.08);
+        cubeRef.current.position.x = lerp(cubeRef.current.position.x, 0, 0.08);
       }
     }
   });
@@ -124,7 +123,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         portal={{ current: scroll.fixed }}
         position={htmlPositions.side2}
       >
-        <AboutPage />
+        <ContactPage />
         <button onClick={() => handleButtonClick("side2")}>Click me plz</button>
       </Html>
       <Html
@@ -146,7 +145,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         portal={{ current: scroll.fixed }}
         position={htmlPositions.side4}
       >
-        <span>sida 4</span>
+        <AboutPage />
         <button onClick={() => handleButtonClick("side4")}>Click me plz</button>
       </Html>
     </mesh>

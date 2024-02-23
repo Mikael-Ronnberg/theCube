@@ -25,11 +25,11 @@ export const TheView = () => {
             <FBOParticles cubeRef={cubeRef} />
           </group>
           <ScrollControls
-            eps={0.8}
+            eps={1}
             pages={3}
             // damping={0.1}
             enabled={!isMoved}
-            maxSpeed={0.9}
+            maxSpeed={0.07}
             distance={4}
           >
             <Cube cubeRef={cubeRef} />
