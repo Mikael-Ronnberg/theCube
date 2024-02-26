@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Canvas } from "@react-three/fiber";
 import { ScrollControls } from "@react-three/drei";
 import { Cube } from "../cube/Cube";
 import { Mesh } from "three";
@@ -7,8 +6,8 @@ import { FBOParticles } from "../particles/FBOParticles";
 import { useCubeState } from "../../stores/cubeStore";
 import { Panel } from "../panel/Panel";
 import { Navbar } from "../navbar/Navbar";
-import "./TheView.css";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
+import { CanvasContainer, ViewContainer } from "./theViewStyles";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
@@ -17,9 +16,9 @@ export const TheView = () => {
 
   return (
     <>
-      <div className="view-container">
+      <ViewContainer>
         <Navbar />
-        <Canvas className="can">
+        <CanvasContainer>
           <ambientLight intensity={2.5} />
           <group position={[0, 0, 0]}>
             <FBOParticles cubeRef={cubeRef} />
@@ -34,9 +33,9 @@ export const TheView = () => {
           >
             <Cube cubeRef={cubeRef} />
           </ScrollControls>
-        </Canvas>
+        </CanvasContainer>
         <Panel component={currentComponent} />
-      </div>
+      </ViewContainer>
     </>
   );
 };
