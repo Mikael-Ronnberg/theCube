@@ -6,10 +6,10 @@ import { AboutPage } from "../../pages/about/AboutPage";
 import { StartPage } from "../../pages/home/StartPage";
 import { useCubeSizeAndPositions } from "../../hooks/useCubeSizeAndPositions";
 import { useEnvironmentSetup } from "../../hooks/useEnvironmentSetup";
-import { useRef } from "react";
 import { useNavStore } from "../../stores/navStore";
 import { ProjectsPage } from "../../pages/projects/ProjectsPage";
 import { ContactPage } from "../../pages/contact/ContactPage";
+import { useRef } from "react";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -22,6 +22,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const { activeSideIndex, setActiveSideIndex } = useNavStore();
   const scroll = useScroll();
   const totalSides = 3;
+  
   const lastSideIndex = useRef(activeSideIndex);
 
   useEnvironmentSetup(cubeRef);
@@ -54,7 +55,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
         targetRotationX,
-        0.3
+        0.1
       );
 
       if (isMoved) {
@@ -95,6 +96,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       }
     }
   });
+
 
   const handleButtonClick = (side: string) => {
     setIsMoved(!isMoved);
