@@ -18,7 +18,7 @@ export const useEnvironmentSetup = (cubeRef: React.RefObject<Mesh>) => {
     const material = cubeRef.current.material as THREE.MeshStandardMaterial;
     material.envMap = envMap;
     material.bumpMap = bumpMap;
-    material.bumpScale = 3.3;
+    // material.bumpScale = 1;
     material.needsUpdate = true;
 
     return () => {
