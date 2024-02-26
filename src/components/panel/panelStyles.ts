@@ -14,7 +14,7 @@ export const PanelContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: auto;
-  transition: transform 0.9s ease;
+  transition: transform 0.6s ease;
   border-left: 2px solid skyblue;
   border-radius: 2%;
   box-shadow: 0px 10px 8px 0px skyblue;

@@ -22,7 +22,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const { activeSideIndex, setActiveSideIndex } = useNavStore();
   const scroll = useScroll();
   const totalSides = 3;
-  
+
   const lastSideIndex = useRef(activeSideIndex);
 
   useEnvironmentSetup(cubeRef);
@@ -55,7 +55,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
         targetRotationX,
-        0.1
+        0.09
       );
 
       if (isMoved) {
@@ -83,20 +83,19 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         cubeRef.current.rotation.y = lerp(
           cubeRef.current.rotation.y,
           targetRotationY,
-          0.1
+          0.07
         );
         cubeRef.current.position.x = lerp(
           cubeRef.current.position.x,
           targetPositionX,
-          0.1
+          0.07
         );
       } else {
-        cubeRef.current.rotation.y = lerp(cubeRef.current.rotation.y, 0, 0.08);
-        cubeRef.current.position.x = lerp(cubeRef.current.position.x, 0, 0.08);
+        cubeRef.current.rotation.y = lerp(cubeRef.current.rotation.y, 0, 0.07);
+        cubeRef.current.position.x = lerp(cubeRef.current.position.x, 0, 0.07);
       }
     }
   });
-
 
   const handleButtonClick = (side: string) => {
     setIsMoved(!isMoved);
