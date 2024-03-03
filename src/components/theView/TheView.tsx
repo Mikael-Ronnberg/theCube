@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import { ScrollControls } from "@react-three/drei";
 import { Cube } from "../cube/Cube";
 import { Mesh } from "three";
@@ -13,6 +13,7 @@ export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
   const { isMoved } = useCubeState();
   const { currentComponent } = useDisplayComponentState();
+  // const [begin, setBegin] = useState<boolean>(false);
 
   return (
     <>
@@ -31,9 +32,12 @@ export const TheView = () => {
             maxSpeed={0.07}
             distance={4}
           >
-            <Cube cubeRef={cubeRef} />
+            <Suspense fallback={null}>
+              <Cube cubeRef={cubeRef} />
+            </Suspense>
           </ScrollControls>
         </CanvasContainer>
+        {/* <LoadingScreen started={begin} onBegin={() => setBegin(true)} /> */}
         <Panel component={currentComponent} />
       </ViewContainer>
     </>

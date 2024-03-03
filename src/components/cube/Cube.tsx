@@ -1,4 +1,4 @@
-import { Html, useScroll } from "@react-three/drei";
+import { Html, useProgress, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
 import { useCubeState } from "../../stores/cubeStore";
@@ -9,7 +9,7 @@ import { useEnvironmentSetup } from "../../hooks/useEnvironmentSetup";
 import { useNavStore } from "../../stores/navStore";
 import { ProjectsPage } from "../../pages/projects/ProjectsPage";
 import { ContactPage } from "../../pages/contact/ContactPage";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -17,9 +17,12 @@ interface CubeProps {
 }
 
 export const Cube = ({ cubeRef }: CubeProps) => {
+  const [progressAnimationExecuted, setProgressAnimationExecuted] =
+    useState(false);
   const { isMoved, activeSide, setIsMoved, setActiveSide } = useCubeState();
   const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
   const { activeSideIndex, setActiveSideIndex } = useNavStore();
+  const { progress } = useProgress();
   const scroll = useScroll();
   const totalSides = 3;
 
@@ -28,6 +31,13 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   useEnvironmentSetup(cubeRef);
 
   useFrame(() => {
+    if (progress === 100 && cubeRef.current && !progressAnimationExecuted) {
+      cubeRef.current.rotation.y = lerp((4 * Math.PI) / 2, 0, 0.04);
+      cubeRef.current.rotation.x = lerp((2 * Math.PI) / 2, -0.3, 0.04);
+
+      setProgressAnimationExecuted(true);
+    }
+
     const scrollSideIndex = Math.floor(scroll.offset * totalSides);
 
     let newSideIndex = lastSideIndex.current;
@@ -51,6 +61,8 @@ export const Cube = ({ cubeRef }: CubeProps) => {
 
     if (cubeRef.current) {
       const targetRotationX = -(activeSideIndex * Math.PI) / 2;
+
+      cubeRef.current.position.z = lerp(cubeRef.current.position.z, 0, 0.08);
 
       cubeRef.current.rotation.x = lerp(
         cubeRef.current.rotation.x,
@@ -103,7 +115,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   };
 
   return (
-    <mesh ref={cubeRef} visible position={[0, -0.3, 0]}>
+    <mesh ref={cubeRef} visible position={[0, -0.3, -30]}>
       <boxGeometry args={cubeSize} />
       <meshStandardMaterial metalness={2} roughness={0} color="black" />
       <Html
