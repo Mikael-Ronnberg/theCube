@@ -132,15 +132,15 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "blue-text-gradient",
+        color: "blue",
       },
       {
         name: "typescript",
-        color: "green-text-gradient",
+        color: "green",
       },
       {
         name: "chakraui",
-        color: "pink-text-gradient",
+        color: "pink",
       },
     ],
     image: ppd,
@@ -153,11 +153,11 @@ const projects = [
     tags: [
       {
         name: "js",
-        color: "blue-text-gradient",
+        color: "blue",
       },
       {
         name: "scss",
-        color: "pink-text-gradient",
+        color: "pink",
       },
     ],
     image: todo,
@@ -170,15 +170,15 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "blue-text-gradient",
+        color: "blue",
       },
       {
         name: "zustand",
-        color: "pink-text-gradient",
+        color: "red",
       },
       {
         name: "chakraUI",
-        color: "pink-text-gradient",
+        color: "pink",
       },
     ],
     image: design,
@@ -191,11 +191,11 @@ const projects = [
     tags: [
       {
         name: "js",
-        color: "blue-text-gradient",
+        color: "blue",
       },
       {
         name: "css",
-        color: "pink-text-gradient",
+        color: "pink",
       },
     ],
     image: design,

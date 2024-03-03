@@ -1,12 +1,12 @@
 import { ServiceCard } from "../../components/cards/ServiceCard";
 import {
+  CardContainer,
   MainContainer,
   TextContainer,
 } from "../../components/ui/containerStyles";
 import { NormalHeader } from "../../components/ui/headerStyles";
 import { NormalText } from "../../components/ui/textStyles";
 import { services } from "../../constants";
-import { HobbyContainer } from "./aboutPageStyles";
 
 export const AboutPage = () => {
   return (
@@ -19,7 +19,7 @@ export const AboutPage = () => {
             From the moment my fingers first danced on a computer keyboard as a
             child, a world of wonder unveiled before my eyes. Initially, I was
             captivated by the enchanting realms of computer games. It wasn’t
-            just about playing; it was the realization that someone had created
+            just about playing - it was the realization that someone had created
             these intricate universes from mere lines of code. This revelation
             led me down a path of curiosity. I became enamored not just with the
             product, but the magic behind it — programming. <br />
@@ -42,7 +42,7 @@ export const AboutPage = () => {
           </NormalText>
         </TextContainer>
 
-        <HobbyContainer>
+        <CardContainer>
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -50,7 +50,7 @@ export const AboutPage = () => {
               icon={service.icon}
             />
           ))}
-        </HobbyContainer>
+        </CardContainer>
       </MainContainer>
     </>
   );

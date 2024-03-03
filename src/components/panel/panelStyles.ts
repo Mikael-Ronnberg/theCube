@@ -27,13 +27,13 @@ export const PanelContainer = styled.div`
     transform: translateX(110%);
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 480px) {
     height: 85vh;
-    width: 60vw;
+    width: 50vw;
   }
 
-  @media (max-width: 480px) {
+  @media (min-width: 768px) {
     height: 85vh;
-    width: 62vw;
+    width: 50vw;
   }
 `;

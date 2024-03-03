@@ -1,8 +1,14 @@
 import { ProjectCard } from "../../components/cards/ProjectCard";
+import {
+  CardContainer,
+  MainContainer,
+  TextContainer,
+} from "../../components/ui/containerStyles";
+import { NormalHeader } from "../../components/ui/headerStyles";
+import { NormalText } from "../../components/ui/textStyles";
 import { projects } from "../../constants";
 import { useCubeState } from "../../stores/cubeStore";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
-import "./ProjectPage.css";
 import { ViewProject } from "./ViewProject";
 
 export type Project = {
@@ -28,16 +34,20 @@ export const ProjectsPage = () => {
 
   return (
     <>
-      <div>
-        <h2>My Works</h2>
-        <p>
-          My portfolio highlights the breadth and depth of my expertise through
-          tangible examples of my projects. Each entry provides a description
-          along with links to the associated code repositories. These selections
-          exemplify my aptitude for tackling intricate challenges, adeptly
-          employing various technologies, and efficiently overseeing projects.
-        </p>
-        <div className="projects-container">
+      <MainContainer>
+        <TextContainer>
+          <NormalHeader>My Works</NormalHeader>
+          <NormalText>
+            My portfolio highlights the breadth and depth of my expertise
+            through tangible examples of my projects. Each entry provides a
+            description along with links to the associated code repositories.
+            These selections exemplify my aptitude for tackling intricate
+            challenges, adeptly employing various technologies, and efficiently
+            overseeing projects.
+          </NormalText>
+        </TextContainer>
+
+        <CardContainer>
           {projects.map((project, index) => (
             <div key={index} onClick={() => handleProjectClick(project)}>
               <ProjectCard
@@ -47,8 +57,8 @@ export const ProjectsPage = () => {
               />
             </div>
           ))}
-        </div>
-      </div>
+        </CardContainer>
+      </MainContainer>
     </>
   );
 };
