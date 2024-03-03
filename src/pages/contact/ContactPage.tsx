@@ -1,104 +1,34 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import { NormalButton } from "../../components/ui/buttonStyles";
+import {
+  MainContainer,
+  TextContainer,
+} from "../../components/ui/containerStyles";
+import { NormalHeader } from "../../components/ui/headerStyles";
+import { NormalText } from "../../components/ui/textStyles";
+import { useCubeState } from "../../stores/cubeStore";
+import { useDisplayComponentState } from "../../stores/displayComponentStore";
+
+import { ViewContact } from "./ViewContact";
 
 export const ContactPage = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const { isMoved, setActiveSide, setIsMoved } = useCubeState();
+  const { setCurrentComponent } = useDisplayComponentState();
 
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
+  const HandleContactClick = () => {
+    setIsMoved(!isMoved);
+    setActiveSide("side2");
+    setCurrentComponent(<ViewContact />);
   };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Mikael Rönnberg",
-          from_email: form.email,
-          to_email: "ronnberg.mikael.webdev@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you ASAP.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Something went wrong. Please try again.");
-        }
-      );
-  };
-
   return (
-    <div>
-      <p>Get in touch</p>
-      <h3>Contact</h3>
+    <MainContainer>
+      <TextContainer>
+        <NormalHeader>Contact</NormalHeader>
+        <NormalText>Don't be a stranger. Get in touch!</NormalText>
+      </TextContainer>
 
-      <form ref={formRef} onSubmit={handleSubmit}>
-        <label>
-          <span>Your Name</span>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="What's your name?"
-          />
-        </label>
-        <label>
-          <span>Your email</span>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="What's your email address?"
-          />
-        </label>
-        <label>
-          <span>Your Message</span>
-          <textarea
-            rows={7}
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="What do you want to say?"
-          />
-        </label>
-
-        <button type="submit">{loading ? "Sending..." : "Send"}</button>
-      </form>
-    </div>
+      <NormalButton onClick={() => HandleContactClick()}>
+        Send a message
+      </NormalButton>
+    </MainContainer>
   );
 };

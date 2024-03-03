@@ -19,7 +19,7 @@ interface CubeProps {
 export const Cube = ({ cubeRef }: CubeProps) => {
   const [progressAnimationExecuted, setProgressAnimationExecuted] =
     useState(false);
-  const { isMoved, activeSide, setIsMoved, setActiveSide } = useCubeState();
+  const { isMoved, activeSide } = useCubeState();
   const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
   const { activeSideIndex, setActiveSideIndex } = useNavStore();
   const { progress } = useProgress();
@@ -109,11 +109,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     }
   });
 
-  const handleButtonClick = (side: string) => {
-    setIsMoved(!isMoved);
-    setActiveSide(side);
-  };
-
   return (
     <mesh ref={cubeRef} visible position={[0, -0.3, -30]}>
       <boxGeometry args={cubeSize} />
@@ -136,7 +131,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side2}
       >
         <ContactPage />
-        <button onClick={() => handleButtonClick("side2")}>Click me plz</button>
       </Html>
       <Html
         occlude

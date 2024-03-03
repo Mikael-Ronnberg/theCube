@@ -44,11 +44,7 @@ export const AboutPage = () => {
 
         <CardContainer>
           {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              icon={service.icon}
-            />
+            <ServiceCard key={index} {...service} />
           ))}
         </CardContainer>
       </MainContainer>

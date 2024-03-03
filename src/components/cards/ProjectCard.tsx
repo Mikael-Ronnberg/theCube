@@ -1,44 +1,35 @@
-import {
-  ProjectCardContainer,
-  ProjectCardHeader,
-  ProjectCardImage,
-  ProjectCardLink,
-} from "./projectCard/projectCardStyles";
+import styled from "styled-components";
+
+export const ProjectCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+`;
+
+export const ProjectCardHeader = styled.h2`
+  font-size: 1.3rem;
+  font-weight: bold;
+`;
+
+export const ProjectCardImage = styled.img`
+  width: 20vw;
+`;
 
 type ProjectCardProps = {
   index: number;
   name: string;
-  description?: string;
-  tags: {
-    name: string;
-    color: string;
-  }[];
   image: string;
-  code_link: string;
 };
 
-export const ProjectCard = ({
-  name,
-  tags,
-  image,
-  code_link,
-}: ProjectCardProps) => {
+export const ProjectCard = ({ name, image }: ProjectCardProps) => {
   return (
     <>
       <ProjectCardContainer>
         <ProjectCardHeader>{name}</ProjectCardHeader>
-
         <ProjectCardImage src={image} alt={name} />
-        <ProjectCardLink href={code_link} target="blank">
-          {name}
-        </ProjectCardLink>
-        <div>
-          {tags.map((tag) => (
-            <p key={`${name}-${tag.name}`} className={`${tag.color}`}>
-              #{tag.name}
-            </p>
-          ))}
-        </div>
       </ProjectCardContainer>
     </>
   );

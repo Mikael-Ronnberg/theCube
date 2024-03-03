@@ -16,7 +16,7 @@ export const PanelContainer = styled.div`
   align-items: center;
   overflow: auto;
   transition: transform 0.6s ease;
-  border-radius: 2%;
+  border-radius: 2px;
   box-shadow: 0px 5px 5px 0px skyblue;
 
   &.active {
