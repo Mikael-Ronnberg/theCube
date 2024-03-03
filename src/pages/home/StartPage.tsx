@@ -1,16 +1,23 @@
+import {
+  MainContainer,
+  TextContainer,
+} from "../../components/ui/containerStyles";
+import { Developer, HomeHeading, HomeSubText } from "./startPageStyles";
+
 export const StartPage = () => {
   return (
     <>
-      <div>
-        <h1>
-          Web <span>Developer</span>
-        </h1>
-        <p>
-          Indulged in
-          <br className="sm:block hidden" />
-          Web-based creations
-        </p>
-      </div>
+      <MainContainer>
+        <TextContainer>
+          <HomeHeading>
+            Web <Developer>Developer</Developer>
+          </HomeHeading>
+          <HomeSubText>
+            Indulged in
+            <span className="block" /> web-based creations
+          </HomeSubText>
+        </TextContainer>
+      </MainContainer>
     </>
   );
 };

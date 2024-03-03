@@ -8,6 +8,7 @@ export const PanelContainer = styled.div`
   width: 50vw;
   height: 85vh;
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -15,9 +16,8 @@ export const PanelContainer = styled.div`
   align-items: center;
   overflow: auto;
   transition: transform 0.6s ease;
-  border-left: 2px solid skyblue;
   border-radius: 2%;
-  box-shadow: 0px 10px 8px 0px skyblue;
+  box-shadow: 0px 5px 5px 0px skyblue;
 
   &.active {
     transform: translateX(0%);

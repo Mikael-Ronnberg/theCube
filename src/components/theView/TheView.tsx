@@ -13,7 +13,6 @@ export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
   const { isMoved } = useCubeState();
   const { currentComponent } = useDisplayComponentState();
-  // const [begin, setBegin] = useState<boolean>(false);
 
   return (
     <>
@@ -37,7 +36,6 @@ export const TheView = () => {
             </Suspense>
           </ScrollControls>
         </CanvasContainer>
-        {/* <LoadingScreen started={begin} onBegin={() => setBegin(true)} /> */}
         <Panel component={currentComponent} />
       </ViewContainer>
     </>

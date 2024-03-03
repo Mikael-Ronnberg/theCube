@@ -126,7 +126,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side1}
       >
         <StartPage />
-        <button onClick={() => handleButtonClick("side1")}>Click me plz</button>
       </Html>
       <Html
         occlude
@@ -148,7 +147,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side3}
       >
         <ProjectsPage />
-        <button onClick={() => handleButtonClick("side3")}>Click me plz</button>
       </Html>
       <Html
         occlude
@@ -159,7 +157,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         position={htmlPositions.side4}
       >
         <AboutPage />
-        <button onClick={() => handleButtonClick("side4")}>Click me plz</button>
       </Html>
     </mesh>
   );
