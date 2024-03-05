@@ -1,0 +1,11 @@
+{
+    "name": "Mikael Rönnberg Portfolio",
+    "short_name": "MR",
+    "icons": [
+    
+    ],
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "display": "fullscreen",
+    "start_url": "/"
+}
