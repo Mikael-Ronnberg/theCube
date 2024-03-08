@@ -119,6 +119,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         portal={{ current: scroll.fixed }}
         position={[0, 0, cubeSize[2] / 2 + 0.01]}
+        center
       >
         <StartPage />
       </Html>
@@ -129,6 +130,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         rotation-x={-Math.PI / 2}
         portal={{ current: scroll.fixed }}
         position={[0, (cubeSize[1] / 2) * 1.02, 0]}
+        center
       >
         <ContactPage />
       </Html>
@@ -139,6 +141,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         rotation-x={-Math.PI / 1}
         portal={{ current: scroll.fixed }}
         position={[0, 0, -cubeSize[2] / 2 - 0.01]}
+        center
       >
         <ProjectsPage />
       </Html>
@@ -149,6 +152,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         rotation-x={-Math.PI / -2}
         portal={{ current: scroll.fixed }}
         position={[0, (-cubeSize[1] / 2) * 1.02, 0]}
+        center
       >
         <AboutPage />
       </Html>
