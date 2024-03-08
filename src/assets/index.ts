@@ -6,7 +6,6 @@ import reactlogo from "./cardIcons/reactlogo.png";
 import webdev from "./cardIcons/webdev.png";
 
 import github from "./github.png";
-import menu from "./menu.svg";
 import close from "./close.svg";
 
 import css from "./tech/css.png";
@@ -24,8 +23,7 @@ import threejs from "./tech/threejs.svg";
 
 import ppd from "./work/ppd.png";
 import todo from "./work/todo.png";
-import tictactoe from "./work/tictactoe.png";
-import design from "./work/design.png";
+import sb from "./work/sb.png";
 
 import bildhistoria from "./company/bildhistoria.png";
 import medieinstitutet from "./company/medieinstitutet.png";
@@ -37,7 +35,6 @@ export {
   webdev,
   logo,
   github,
-  menu,
   close,
   css,
   docker,
@@ -53,8 +50,7 @@ export {
   threejs,
   ppd,
   todo,
-  tictactoe,
-  design,
+  sb,
   bildhistoria,
   medieinstitutet,
 };

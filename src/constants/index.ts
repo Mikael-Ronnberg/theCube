@@ -19,7 +19,7 @@ import {
   gamenerd,
   ppd,
   todo,
-  design,
+  sb,
 } from "../assets";
 
 const services = [
@@ -181,25 +181,8 @@ const projects = [
         color: "pink",
       },
     ],
-    image: design,
+    image: sb,
     code_link: "https://github.com/Mikael-Ronnberg/TicTacToe-React",
-  },
-  {
-    name: "From Design to Web",
-    description:
-      "This website was built using a wireframe design as an assignment from our basic HTML/CSS course. Even if it was our first assignement, it was fun and hard at the same time. It is also fun to see how much I've improved since making this.",
-    tags: [
-      {
-        name: "js",
-        color: "blue",
-      },
-      {
-        name: "css",
-        color: "pink",
-      },
-    ],
-    image: design,
-    code_link: "https://github.com/Mikael-Ronnberg/Design",
   },
 ];
 

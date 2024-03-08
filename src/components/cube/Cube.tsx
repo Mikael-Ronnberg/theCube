@@ -20,7 +20,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const [progressAnimationExecuted, setProgressAnimationExecuted] =
     useState(false);
   const { isMoved, activeSide } = useCubeState();
-  const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
+  const { cubeSize } = useCubeSizeAndPositions();
   const { activeSideIndex, setActiveSideIndex } = useNavStore();
   const { progress } = useProgress();
   const scroll = useScroll();
@@ -112,13 +112,13 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   return (
     <mesh ref={cubeRef} visible position={[0, -0.3, -30]}>
       <boxGeometry args={cubeSize} />
-      <meshStandardMaterial metalness={2} roughness={0} color="black" />
+      <meshStandardMaterial metalness={2.3} roughness={0} color="#000000" />
       <Html
         occlude
         distanceFactor={1.5}
         transform
         portal={{ current: scroll.fixed }}
-        position={htmlPositions.side1}
+        position={[0, 0, cubeSize[2] / 2 + 0.01]}
       >
         <StartPage />
       </Html>
@@ -128,7 +128,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         rotation-x={-Math.PI / 2}
         portal={{ current: scroll.fixed }}
-        position={htmlPositions.side2}
+        position={[0, (cubeSize[1] / 2) * 1.02, 0]}
       >
         <ContactPage />
       </Html>
@@ -138,7 +138,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         rotation-x={-Math.PI / 1}
         portal={{ current: scroll.fixed }}
-        position={htmlPositions.side3}
+        position={[0, 0, -cubeSize[2] / 2 - 0.01]}
       >
         <ProjectsPage />
       </Html>
@@ -148,7 +148,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         rotation-x={-Math.PI / -2}
         portal={{ current: scroll.fixed }}
-        position={htmlPositions.side4}
+        position={[0, (-cubeSize[1] / 2) * 1.02, 0]}
       >
         <AboutPage />
       </Html>

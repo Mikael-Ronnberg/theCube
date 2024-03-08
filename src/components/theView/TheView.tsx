@@ -19,6 +19,7 @@ export const TheView = () => {
       <ViewContainer>
         <Navbar />
         <CanvasContainer>
+          {/* <OrbitControls /> */}
           <ambientLight intensity={2.5} />
           <group position={[0, 0, 0]}>
             <FBOParticles cubeRef={cubeRef} />
