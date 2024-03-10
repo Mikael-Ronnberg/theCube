@@ -26,6 +26,12 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const scroll = useScroll();
   const totalSides = 3;
 
+  const pixelRatio = window.devicePixelRatio || 1;
+
+  const htmlStyle = {
+    marginTop: pixelRatio === 3 ? 10 : "auto",
+  };
+
   const lastSideIndex = useRef(activeSideIndex);
 
   useEnvironmentSetup(cubeRef);
@@ -114,6 +120,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <boxGeometry args={cubeSize} />
       <meshStandardMaterial metalness={2.3} roughness={0} color="#000000" />
       <Html
+        style={htmlStyle}
         occlude
         distanceFactor={1.5}
         transform
@@ -124,6 +131,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <StartPage />
       </Html>
       <Html
+        style={htmlStyle}
         occlude
         distanceFactor={1.5}
         transform
@@ -135,6 +143,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ContactPage />
       </Html>
       <Html
+        style={htmlStyle}
         occlude
         distanceFactor={1.5}
         transform
@@ -146,6 +155,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ProjectsPage />
       </Html>
       <Html
+        style={htmlStyle}
         occlude
         distanceFactor={1.5}
         transform

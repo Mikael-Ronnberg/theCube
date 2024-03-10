@@ -13,17 +13,12 @@ export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
   const { isMoved } = useCubeState();
   const { currentComponent } = useDisplayComponentState();
-  const pixelRatio = window.devicePixelRatio || 1;
-
-  const canvasStyle = {
-    marginTop: pixelRatio === 3 ? 10 : "auto",
-  };
 
   return (
     <>
       <ViewContainer>
         <Navbar />
-        <CanvasContainer style={canvasStyle}>
+        <CanvasContainer>
           {/* <OrbitControls /> */}
           <ambientLight intensity={2.5} />
           <group position={[0, 0, 0]}>
