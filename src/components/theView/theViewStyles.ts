@@ -10,8 +10,4 @@ export const ViewContainer = styled.div`
 
 export const CanvasContainer = styled(Canvas)`
   background: black;
-  @media (orientation: portrait) {
-    @media (-webkit-device-pixel-ratio: 3) {
-    }
-  }
 `;
