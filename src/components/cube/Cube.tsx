@@ -26,12 +26,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const scroll = useScroll();
   const totalSides = 3;
 
-  const pixelRatio = window.devicePixelRatio || 1;
-
-  const htmlStyle = {
-    marginTop: pixelRatio === 3 ? 10 : "auto",
-  };
-
   const lastSideIndex = useRef(activeSideIndex);
 
   useEnvironmentSetup(cubeRef);
@@ -120,49 +114,45 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <boxGeometry args={cubeSize} />
       <meshStandardMaterial metalness={2.3} roughness={0} color="#000000" />
       <Html
-        style={htmlStyle}
+        style={{ width: "100vw", height: "100vh;" }}
         occlude
         distanceFactor={1.5}
         transform
         portal={{ current: scroll.fixed }}
         position={[0, 0, cubeSize[2] / 2 + 0.01]}
-        center
       >
         <StartPage />
       </Html>
       <Html
-        style={htmlStyle}
+        style={{ width: "100vw", height: "100vh;" }}
         occlude
         distanceFactor={1.5}
         transform
         rotation-x={-Math.PI / 2}
         portal={{ current: scroll.fixed }}
         position={[0, (cubeSize[1] / 2) * 1.02, 0]}
-        center
       >
         <ContactPage />
       </Html>
       <Html
-        style={htmlStyle}
+        style={{ width: "100vw", height: "100vh;" }}
         occlude
         distanceFactor={1.5}
         transform
         rotation-x={-Math.PI / 1}
         portal={{ current: scroll.fixed }}
         position={[0, 0, -cubeSize[2] / 2 - 0.01]}
-        center
       >
         <ProjectsPage />
       </Html>
       <Html
-        style={htmlStyle}
+        style={{ width: "100vw", height: "100vh;", marginTop: -20 }}
         occlude
         distanceFactor={1.5}
         transform
         rotation-x={-Math.PI / -2}
         portal={{ current: scroll.fixed }}
         position={[0, (-cubeSize[1] / 2) * 1.02, 0]}
-        center
       >
         <AboutPage />
       </Html>
