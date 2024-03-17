@@ -1,7 +1,7 @@
 import { ServiceCard } from "../../components/cards/ServiceCard";
 import {
-  CardContainer,
   MainContainer,
+  ServiceCardContainer,
   TextContainer,
 } from "../../components/ui/containerStyles";
 import { NormalHeader } from "../../components/ui/headerStyles";
@@ -28,11 +28,11 @@ export const AboutPage = () => {
           </NormalText>
         </TextContainer>
 
-        <CardContainer>
+        <ServiceCardContainer>
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
-        </CardContainer>
+        </ServiceCardContainer>
       </MainContainer>
     </>
   );

@@ -116,7 +116,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <Html
         style={{ width: "100vw", height: "100vh" }}
         occlude
-        distanceFactor={1.5}
+        distanceFactor={1.6}
         transform
         portal={{ current: scroll.fixed }}
         position={[0, 0, cubeSize[2] / 2 + 0.01]}
@@ -126,7 +126,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <Html
         style={{ width: "100vw", height: "100vh" }}
         occlude
-        distanceFactor={1.5}
+        distanceFactor={1.8}
         transform
         rotation-x={-Math.PI / 2}
         portal={{ current: scroll.fixed }}
@@ -137,7 +137,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <Html
         style={{ width: "100vw", height: "100vh" }}
         occlude
-        distanceFactor={1.5}
+        distanceFactor={1.8}
         transform
         rotation-x={-Math.PI / 1}
         portal={{ current: scroll.fixed }}
@@ -148,7 +148,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <Html
         style={{ width: "100vw", height: "100vh", marginTop: -20 }}
         occlude
-        distanceFactor={1.5}
+        distanceFactor={1.8}
         transform
         rotation-x={-Math.PI / -2}
         portal={{ current: scroll.fixed }}

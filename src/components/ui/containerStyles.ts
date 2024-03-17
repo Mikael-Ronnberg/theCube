@@ -16,6 +16,12 @@ export const TextContainer = styled.div`
   justify-content: flex-start;
 `;
 
+export const ServiceCardContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: inherit;
+`;
+
 export const ProjectsContainer = styled.div`
   width: inherit;
   display: grid;
