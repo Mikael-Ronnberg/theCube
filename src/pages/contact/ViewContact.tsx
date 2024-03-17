@@ -1,7 +1,12 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { DisplayContainer } from "../../components/ui/containerStyles";
-import { ContactForm } from "./contactStlyes";
+import {
+  ContactForm,
+  ContactHeading,
+  ContactInput,
+  ContactLabel,
+  ContactTextarea,
+} from "./contactStlyes";
 import { NormalButton } from "../../components/ui/buttonStyles";
 
 export const ViewContact = () => {
@@ -64,43 +69,41 @@ export const ViewContact = () => {
   };
 
   return (
-    <DisplayContainer>
-      <ContactForm ref={formRef} onSubmit={handleSubmit}>
-        <label>
-          <span>Your Name</span>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="What's your name?"
-          />
-        </label>
-        <label>
-          <span>Your email</span>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="What's your email address?"
-          />
-        </label>
-        <label>
-          <span>Your Message</span>
-          <textarea
-            rows={7}
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="What do you want to say?"
-          />
-        </label>
+    <ContactForm ref={formRef} onSubmit={handleSubmit}>
+      <ContactLabel>
+        <ContactHeading>Your Name</ContactHeading>
+        <ContactInput
+          type="text"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="What's your name?"
+        />
+      </ContactLabel>
+      <ContactLabel>
+        <ContactHeading>Your email</ContactHeading>
+        <ContactInput
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="What's your email address?"
+        />
+      </ContactLabel>
+      <ContactLabel>
+        <ContactHeading>Your Message</ContactHeading>
+        <ContactTextarea
+          rows={7}
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          placeholder="What do you want to say?"
+        />
+      </ContactLabel>
 
-        <NormalButton type="submit">
-          {loading ? "Sending..." : "Send"}
-        </NormalButton>
-      </ContactForm>
-    </DisplayContainer>
+      <NormalButton type="submit">
+        {loading ? "Sending..." : "Send"}
+      </NormalButton>
+    </ContactForm>
   );
 };
