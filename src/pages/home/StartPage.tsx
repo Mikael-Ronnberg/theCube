@@ -20,17 +20,8 @@ export const StartPage = () => {
           </HomeSubText>
         </TextContainer>
       </MainContainer>
-      <div
-        style={{
-          position: "relative",
-          bottom: "500px",
-          left: "50px",
-          zIndex: -20,
-          opacity: "0.3",
-        }}
-      >
-        <HexagonLayout items={technologies} />
-      </div>
+
+      <HexagonLayout items={technologies} />
     </>
   );
 };

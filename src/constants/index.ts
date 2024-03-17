@@ -55,6 +55,10 @@ const technologies = [
     icon: javascript,
   },
   {
+    name: "Three JS",
+    icon: threejs,
+  },
+  {
     name: "TypeScript",
     icon: typescript,
   },
@@ -73,10 +77,6 @@ const technologies = [
   {
     name: "MongoDB",
     icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
   },
   {
     name: "git",

@@ -12,6 +12,7 @@ export const ProjectCardContainer = styled.div`
 export const ProjectCardHeader = styled.h2`
   font-size: 1.3rem;
   font-weight: bold;
+  margin: 0.5rem 0;
 `;
 
 export const ProjectCardImage = styled.img`
