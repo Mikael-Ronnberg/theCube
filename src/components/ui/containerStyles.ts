@@ -22,8 +22,8 @@ export const CardContainer = styled.div`
 `;
 
 export const DisplayContainer = styled.div`
-  width: 50vw;
-  height: 85vh;
+  width: inherit;
+  height: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;

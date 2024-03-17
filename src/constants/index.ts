@@ -128,19 +128,19 @@ const projects = [
   {
     name: "Plant Dad Depot",
     description:
-      "A simple webshop made as an assignement in the course Basic Javascript. It lacks the backend part and uses mockdata instead. All images (except hero img) are AI generated using Midjourney",
+      "A simple webshop, that started as a group assignement in the course Basic Javascript but that I later remade. It lacks the backend part and uses mockdata instead. All images (except hero img) are AI generated using Midjourney",
     tags: [
       {
         name: "react",
-        color: "blue",
+        color: "#7EC9F3",
       },
       {
         name: "typescript",
-        color: "green",
+        color: "#5FCD61",
       },
       {
         name: "chakraui",
-        color: "pink",
+        color: "#E98CBC",
       },
     ],
     image: ppd,
@@ -153,11 +153,11 @@ const projects = [
     tags: [
       {
         name: "js",
-        color: "blue",
+        color: "#7EC9F3",
       },
       {
         name: "scss",
-        color: "pink",
+        color: "#E98CBC",
       },
     ],
     image: todo,
@@ -170,15 +170,15 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "blue",
+        color: "#7EC9F3",
       },
       {
         name: "zustand",
-        color: "red",
+        color: "#FD6262",
       },
       {
         name: "chakraUI",
-        color: "pink",
+        color: "#E98CBC",
       },
     ],
     image: sb,

@@ -112,9 +112,9 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   return (
     <mesh ref={cubeRef} visible position={[0, -0.3, -30]}>
       <boxGeometry args={cubeSize} />
-      <meshStandardMaterial metalness={2.3} roughness={0} color="#000000" />
+      <meshStandardMaterial metalness={2.3} roughness={0} color="#05050f" />
       <Html
-        style={{ width: "100vw", height: "100vh;" }}
+        style={{ width: "100vw", height: "100vh" }}
         occlude
         distanceFactor={1.5}
         transform
@@ -124,7 +124,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <StartPage />
       </Html>
       <Html
-        style={{ width: "100vw", height: "100vh;" }}
+        style={{ width: "100vw", height: "100vh" }}
         occlude
         distanceFactor={1.5}
         transform
@@ -135,7 +135,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ContactPage />
       </Html>
       <Html
-        style={{ width: "100vw", height: "100vh;" }}
+        style={{ width: "100vw", height: "100vh" }}
         occlude
         distanceFactor={1.5}
         transform
@@ -146,7 +146,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ProjectsPage />
       </Html>
       <Html
-        style={{ width: "100vw", height: "100vh;", marginTop: -20 }}
+        style={{ width: "100vw", height: "100vh", marginTop: -20 }}
         occlude
         distanceFactor={1.5}
         transform

@@ -34,14 +34,14 @@ export const ContactInput = styled.input`
   background-color: black;
   border: 2px solid skyblue;
   padding: 5px 5px;
-  width: 25vw;
+  width: 50vw;
   &:focus {
     outline: none;
     border-color: white;
     box-shadow: 0 0 5px white;
   }
   @media (min-width: 480px) {
-    width: 30vw;
+    width: 48vw;
   }
   @media (min-width: 768px) {
     width: 300px;
@@ -54,14 +54,14 @@ export const ContactTextarea = styled.textarea`
   background-color: black;
   border: 2px solid skyblue;
   padding: 5px 5px;
-  width: 25vw;
+  width: 50vw;
   &:focus {
     outline: none;
     border-color: white;
     box-shadow: 0 0 5px white;
   }
   @media (min-width: 480px) {
-    width: 30vw;
+    width: 48vw;
   }
 
   @media (min-width: 768px) {
@@ -77,9 +77,9 @@ export const ContactButton = styled.button`
   padding: 10px 20px;
   margin: 0.6rem;
   cursor: pointer;
-  width: 25vw;
+  width: 50vw;
   @media (min-width: 480px) {
-    width: 30vw;
+    width: 48vw;
   }
 
   @media (min-width: 768px) {

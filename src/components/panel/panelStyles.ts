@@ -5,7 +5,7 @@ export const PanelContainer = styled.div`
   bottom: 0;
   right: 0;
   z-index: 20;
-  width: 50vw;
+  width: 70vw;
   height: 85vh;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
@@ -18,22 +18,19 @@ export const PanelContainer = styled.div`
   transition: transform 0.6s ease;
   border-radius: 2px;
   box-shadow: 0px 5px 5px 0px skyblue;
-
   &.active {
     transform: translateX(0%);
   }
-
   &.inactive {
     transform: translateX(110%);
   }
-
   @media (min-width: 480px) {
-    height: 85vh;
-    width: 50vw;
+    width: 65vw;
   }
-
   @media (min-width: 768px) {
-    height: 85vh;
+    width: 55vw;
+  }
+  @media (min-width: 992px) {
     width: 50vw;
   }
 `;
