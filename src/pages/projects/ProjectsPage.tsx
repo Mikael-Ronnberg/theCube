@@ -1,7 +1,7 @@
-import { ProjectCard } from "../../components/cards/ProjectCard";
+import { CardContainer, ProjectCard } from "../../components/cards/ProjectCard";
 import {
-  CardContainer,
   MainContainer,
+  ProjectsContainer,
   TextContainer,
 } from "../../components/ui/containerStyles";
 import { NormalHeader } from "../../components/ui/headerStyles";
@@ -35,29 +35,30 @@ export const ProjectsPage = () => {
   return (
     <>
       <MainContainer>
-        <TextContainer>
-          <NormalHeader>My Works</NormalHeader>
-          <NormalText>
-            My portfolio highlights the breadth and depth of my expertise
-            through tangible examples of my projects. Each entry provides a
-            description along with links to the associated code repositories.
-            These selections exemplify my aptitude for tackling intricate
-            challenges, adeptly employing various technologies, and efficiently
-            overseeing projects.
-          </NormalText>
-        </TextContainer>
+        <ProjectsContainer>
+          <TextContainer>
+            <NormalHeader>My Works</NormalHeader>
+            <NormalText>
+              My portfolio highlights the breadth and depth of my expertise
+              through tangible examples of my projects. Each entry provides a
+              description along with links to the associated code repositories.
+              These selections exemplify my aptitude for tackling intricate
+              challenges, adeptly employing various technologies, and
+              efficiently overseeing projects.
+            </NormalText>
+          </TextContainer>
 
-        <CardContainer>
-          {projects.map((project, index) => (
-            <div key={index} onClick={() => handleProjectClick(project)}>
+          <CardContainer>
+            {projects.map((project, index) => (
               <ProjectCard
                 key={`project-${index}`}
                 index={index}
                 {...project}
+                onClick={() => handleProjectClick(project)}
               />
-            </div>
-          ))}
-        </CardContainer>
+            ))}
+          </CardContainer>
+        </ProjectsContainer>
       </MainContainer>
     </>
   );
