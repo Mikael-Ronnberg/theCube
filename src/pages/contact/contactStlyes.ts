@@ -15,16 +15,16 @@ export const ContactLabel = styled.label`
 `;
 
 export const ContactHeading = styled.span`
-  font-size: 1rem;
+  font-size: 1.1rem;
   padding: 0.25rem;
-  color: skyblue;
+  color: white;
 
   @media (min-width: 480px) {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
 
   @media (min-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
   }
 `;
 

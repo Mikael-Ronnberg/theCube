@@ -83,7 +83,7 @@ export const ViewContact = () => {
             name="name"
             value={form.name}
             onChange={handleChange}
-            placeholder="What's your name?"
+            placeholder="Name"
           />
         </ContactLabel>
         <ContactLabel>
@@ -93,7 +93,7 @@ export const ViewContact = () => {
             name="email"
             value={form.email}
             onChange={handleChange}
-            placeholder="What's your email address?"
+            placeholder="email"
           />
         </ContactLabel>
         <ContactLabel>
@@ -103,7 +103,7 @@ export const ViewContact = () => {
             name="message"
             value={form.message}
             onChange={handleChange}
-            placeholder="What do you want to say?"
+            placeholder="Message"
           />
         </ContactLabel>
 
