@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
+  ContactButton,
   ContactForm,
   ContactHeading,
   ContactInput,
   ContactLabel,
   ContactTextarea,
 } from "./contactStlyes";
-import { NormalButton } from "../../components/ui/buttonStyles";
 
 export const ViewContact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -18,6 +18,7 @@ export const ViewContact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -51,7 +52,7 @@ export const ViewContact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Thank you. I will get back to you ASAP.");
+          setDone(true);
 
           setForm({
             name: "",
@@ -68,42 +69,48 @@ export const ViewContact = () => {
       );
   };
 
-  return (
-    <ContactForm ref={formRef} onSubmit={handleSubmit}>
-      <ContactLabel>
-        <ContactHeading>Your Name</ContactHeading>
-        <ContactInput
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="What's your name?"
-        />
-      </ContactLabel>
-      <ContactLabel>
-        <ContactHeading>Your email</ContactHeading>
-        <ContactInput
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="What's your email address?"
-        />
-      </ContactLabel>
-      <ContactLabel>
-        <ContactHeading>Your Message</ContactHeading>
-        <ContactTextarea
-          rows={7}
-          name="message"
-          value={form.message}
-          onChange={handleChange}
-          placeholder="What do you want to say?"
-        />
-      </ContactLabel>
+  return done ? (
+    <ContactHeading>
+      Thank you. I will get back to you as soon as I can
+    </ContactHeading>
+  ) : (
+    <>
+      <ContactForm ref={formRef} onSubmit={handleSubmit}>
+        <ContactLabel>
+          <ContactHeading>Your Name</ContactHeading>
+          <ContactInput
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            placeholder="What's your name?"
+          />
+        </ContactLabel>
+        <ContactLabel>
+          <ContactHeading>Your email</ContactHeading>
+          <ContactInput
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="What's your email address?"
+          />
+        </ContactLabel>
+        <ContactLabel>
+          <ContactHeading>Your Message</ContactHeading>
+          <ContactTextarea
+            rows={7}
+            name="message"
+            value={form.message}
+            onChange={handleChange}
+            placeholder="What do you want to say?"
+          />
+        </ContactLabel>
 
-      <NormalButton type="submit">
-        {loading ? "Sending..." : "Send"}
-      </NormalButton>
-    </ContactForm>
+        <ContactButton type="submit">
+          {loading ? "Sending..." : "Send"}
+        </ContactButton>
+      </ContactForm>
+    </>
   );
 };
