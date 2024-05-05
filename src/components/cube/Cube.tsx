@@ -112,7 +112,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   return (
     <mesh ref={cubeRef} visible position={[0, -0.3, -30]}>
       <boxGeometry args={cubeSize} />
-      <meshStandardMaterial metalness={2.3} roughness={0} color="#05050f" />
+      <meshStandardMaterial metalness={1} roughness={0.01} color="#05050f" />
       <Html
         style={{ width: "100vw", height: "100vh", position: "relative" }}
         occlude
