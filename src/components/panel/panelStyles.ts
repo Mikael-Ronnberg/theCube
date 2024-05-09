@@ -18,6 +18,13 @@ export const PanelContainer = styled.div`
   transition: transform 0.6s ease;
   border-radius: 2px;
   box-shadow: 0px 5px 5px 0px skyblue;
+
+  --aug-border-bg: radial-gradient(at top center, pink 25%, transparent 50%),
+    skyblue 50% 50% / 100% 100%;
+
+  --aug-border-all: 2px;
+  --aug-border-right: 0%;
+  --aug-border-bottom: 0%;
   &.active {
     transform: translateX(0%);
   }

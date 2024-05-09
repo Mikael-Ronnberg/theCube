@@ -17,6 +17,8 @@ export const Panel = ({ component }: PanelProps) => {
     <PanelContainer
       ref={panelRef}
       className={`PanelContainer ${isMoved ? "active" : "inactive"}`}
+      data-augmented-ui="
+  tl-2-clip-y bl-clip border"
     >
       <div>{component}</div>
     </PanelContainer>

@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
-  ContactButton,
-  ContactForm,
   ContactHeading,
-  ContactInput,
+  ContactForm,
   ContactLabel,
+  ContactInput,
   ContactTextarea,
-} from "./contactStlyes";
+  ContactButton,
+} from "./contactStyles";
 
 export const ViewContact = () => {
   const formRef = useRef<HTMLFormElement>(null);
