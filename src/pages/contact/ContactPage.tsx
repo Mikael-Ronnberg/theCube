@@ -3,12 +3,13 @@ import {
   MainContainer,
   TextContainer,
 } from "../../components/ui/containerStyles";
+import "./contact.css";
 import { NormalHeader } from "../../components/ui/headerStyles";
 import { NormalText } from "../../components/ui/textStyles";
 import { useCubeState } from "../../stores/cubeStore";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
-
 import { ViewContact } from "./ViewContact";
+import { OuterLayer } from "../../components/ui/augmentedStyles/augmentedStyles";
 
 export const ContactPage = () => {
   const { isMoved, setActiveSide, setIsMoved } = useCubeState();
@@ -23,10 +24,18 @@ export const ContactPage = () => {
     <MainContainer>
       <TextContainer>
         <NormalHeader>Contact</NormalHeader>
-        <NormalText>Don't be a stranger. Get in touch!</NormalText>
       </TextContainer>
 
-      <NormalButton onClick={() => HandleContactClick()}>
+      <OuterLayer sideText="ContactPage.tsx">
+        <NormalText>Don't be a stranger. Get in touch!</NormalText>
+      </OuterLayer>
+
+      <NormalButton
+        onClick={() => HandleContactClick()}
+        data-augmented-ui="
+  tl-clip tr-clip both
+"
+      >
         Send a message
       </NormalButton>
     </MainContainer>

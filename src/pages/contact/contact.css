@@ -1,0 +1,41 @@
+
+
+.pitch-mixin {
+    width: 80%;
+    height: 70%;
+    --aug-tr: 30px;
+    --aug-tl: 30px;
+    --aug-br: 30px;
+    --aug-bl: 30px;
+    --aug-b: 10px;
+    --aug-b-extend1: 50%;
+
+    --aug-border-all: 2px;
+    --aug-border-bg: radial-gradient(
+      at top, pink 25%, transparent 50%),
+      skyblue 50% 50% / 100% 100%;
+
+    --aug-inlay-all: 19px;
+    --aug-inlay-bg: radial-gradient(pink, black);
+    --aug-inlay-border: radial-gradient(pink, black);
+    /* --aug-inlay-bg: radial-gradient(pink, black); */
+    --aug-inlay-opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inner-cont {
+    --aug-tr: 30px;
+    --aug-tl: 30px;
+    --aug-br: 20px;
+    --aug-bl: 20px;
+    --aug-border-t-scoop: 10px;
+    --aug-b-extend1: 50%;
+    width: 85%;
+    height: 85%;
+    --aug-border-all: 5px;
+    --aug-border-bg:
+      rgba(135, 207, 235, 0.481) 50%;
+      --aug-inlay-bg: transparent;
+  }
