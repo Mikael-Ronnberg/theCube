@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 93%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,4 +40,35 @@ export const DisplayContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const ContactHeaderContainer = styled.div`
+  width: 42%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border: 1px solid skyblue;
+  padding: 10px 55px;
+  top: 49px;
+  --aug-border-all: 1px;
+  --aug-br: 25px;
+  --aug-bl: 30px;
+
+  @media (min-width: 480px) {
+    width: 38%;
+    font-size: 2.2rem;
+    top: 63px;
+    --aug-br: 25px;
+    --aug-bl: 25px;
+  }
+
+  @media (min-width: 768px) {
+    width: 40%;
+    font-size: 3rem;
+    top: 78px;
+    --aug-br: 40px;
+    --aug-bl: 40px;
+  }
 `;

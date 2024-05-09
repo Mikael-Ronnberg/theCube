@@ -9,15 +9,19 @@ export const PanelContainer = styled.div`
   height: 85vh;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: auto;
   transition: transform 0.6s ease;
-  border-radius: 2px;
-  box-shadow: 0px 5px 5px 0px skyblue;
+
+  --aug-border-bg: radial-gradient(at top center, pink 25%, transparent 50%),
+    skyblue 50% 50% / 100% 100%;
+
+  --aug-border-all: 2px;
+  --aug-border-right: 0%;
+  --aug-border-bottom: 0%;
   &.active {
     transform: translateX(0%);
   }

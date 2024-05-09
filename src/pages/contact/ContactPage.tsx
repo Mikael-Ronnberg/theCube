@@ -1,13 +1,13 @@
+import { ContactOuterLayer } from "../../components/ui/augmentedStyles/augmentedContactStyles";
 import { NormalButton } from "../../components/ui/buttonStyles";
 import {
+  ContactHeaderContainer,
   MainContainer,
-  TextContainer,
 } from "../../components/ui/containerStyles";
-import { NormalHeader } from "../../components/ui/headerStyles";
+import { ContactHeader } from "../../components/ui/headerStyles";
 import { NormalText } from "../../components/ui/textStyles";
 import { useCubeState } from "../../stores/cubeStore";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
-
 import { ViewContact } from "./ViewContact";
 
 export const ContactPage = () => {
@@ -21,13 +21,25 @@ export const ContactPage = () => {
   };
   return (
     <MainContainer>
-      <TextContainer>
-        <NormalHeader>Contact</NormalHeader>
-        <NormalText>Don't be a stranger. Get in touch!</NormalText>
-      </TextContainer>
+      <ContactHeaderContainer
+        data-augmented-ui="
+  bl-clip br-clip both
+"
+      >
+        <ContactHeader>Contact</ContactHeader>
+      </ContactHeaderContainer>
 
-      <NormalButton onClick={() => HandleContactClick()}>
-        Send a message
+      <ContactOuterLayer sideText="ContactPage.tsx">
+        <NormalText>Don't be a stranger. Get in touch!</NormalText>
+      </ContactOuterLayer>
+
+      <NormalButton
+        onClick={() => HandleContactClick()}
+        data-augmented-ui="
+  tl-clip tr-clip both
+"
+      >
+        Message
       </NormalButton>
     </MainContainer>
   );
