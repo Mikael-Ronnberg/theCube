@@ -75,8 +75,18 @@ export const ViewContact = () => {
     </ContactHeading>
   ) : (
     <>
-      <ContactForm ref={formRef} onSubmit={handleSubmit}>
-        <ContactLabel>
+      <ContactForm
+        ref={formRef}
+        onSubmit={handleSubmit}
+        data-augmented-ui="
+  tl-round-y tr-scoop br-2-clip-x bl-round-x border
+"
+      >
+        <ContactLabel
+          data-augmented-ui="
+  tl-clip-inset tr-clip both
+"
+        >
           <ContactHeading>Your Name</ContactHeading>
           <ContactInput
             type="text"

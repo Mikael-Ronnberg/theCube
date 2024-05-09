@@ -1,3 +1,4 @@
+import { ContactOuterLayer } from "../../components/ui/augmentedStyles/augmentedContactStyles";
 import { NormalButton } from "../../components/ui/buttonStyles";
 import {
   ContactHeaderContainer,
@@ -8,7 +9,6 @@ import { NormalText } from "../../components/ui/textStyles";
 import { useCubeState } from "../../stores/cubeStore";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
 import { ViewContact } from "./ViewContact";
-import { ContactOuterLayer } from "../../components/ui/augmentedStyles/augmentedStyles";
 
 export const ContactPage = () => {
   const { isMoved, setActiveSide, setIsMoved } = useCubeState();
