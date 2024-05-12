@@ -109,8 +109,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     }
   });
 
-  console.log(cubeSize[1]);
-
   return (
     <mesh ref={cubeRef} visible position={[0, -0.2, -30]}>
       <boxGeometry args={cubeSize} />

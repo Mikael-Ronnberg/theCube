@@ -22,7 +22,7 @@ export const useCubeSizeAndPositions = () => {
         side1: [-0.15, 0, halfDepth] as [number, number, number],
         side2: [-0.15, halfDepth, 0] as [number, number, number],
         side3: [-0.15, 0, -halfDepth] as [number, number, number],
-        side4: [-0.15, -halfDepth, 0] as [number, number, number],
+        side4: [0.15, -halfDepth, 0] as [number, number, number],
       };
       setHtmlPositions(newHtmlPositions);
     } else {
