@@ -125,7 +125,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <StartPage />
       </Html>
       <Html
-        style={{ width: "100vw", height: "100vh", position: "relative" }}
+        className="cube-side"
         occlude
         distanceFactor={1.8}
         transform
@@ -136,7 +136,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ContactPage />
       </Html>
       <Html
-        style={{ width: "100vw", height: "100vh", position: "relative" }}
+        className="cube-side"
         occlude
         distanceFactor={1.8}
         transform
@@ -147,7 +147,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ProjectsPage />
       </Html>
       <Html
-        style={{ width: "100vw", height: "100vh", position: "relative" }}
+        className="cube-side"
         occlude
         distanceFactor={1.8}
         transform
