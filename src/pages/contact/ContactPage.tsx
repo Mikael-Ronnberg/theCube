@@ -24,9 +24,7 @@ export const ContactPage = () => {
         <NormalHeader>Contact</NormalHeader>
       </TextContainer>
 
-      {/* <ContactOuterLayer sideText="ContactPage.tsx"> */}
       <NormalText>Don't be a stranger. Get in touch!</NormalText>
-      {/* </ContactOuterLayer> */}
 
       <NormalButton onClick={() => HandleContactClick()}>Message</NormalButton>
     </MainContainer>

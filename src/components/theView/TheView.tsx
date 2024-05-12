@@ -1,5 +1,5 @@
 import { Suspense, useRef } from "react";
-import { ScrollControls } from "@react-three/drei";
+import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Cube } from "../cube/Cube";
 import { Mesh } from "three";
 import { FBOParticles } from "../particles/FBOParticles";
@@ -21,7 +21,7 @@ export const TheView = () => {
       <ViewContainer>
         <Navbar />
         <CanvasContainer>
-          {/* <OrbitControls /> */}
+          <OrbitControls />
           <ambientLight intensity={2.5} />
 
           <mesh ref={orbRef} position={[20, 30, -48]}>
