@@ -20,8 +20,8 @@ const HexagonGridContainer = styled.section`
   grid-template-columns: repeat(var(--Nhexa), 1fr);
   grid-gap: var(--gap);
   position: relative;
-  bottom: 600px;
-  left: -20px;
+  /* bottom: 600px; */
+  /* left: -20px; */
   z-index: -2;
 `;
 
