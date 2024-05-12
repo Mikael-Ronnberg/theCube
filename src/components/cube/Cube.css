@@ -1,6 +1,6 @@
 
 
-@media (-webkit-device-pixel-ratio: 3) {
+
   .cube-side {
     display: flex;
     /* flex-direction: column; */
@@ -10,7 +10,7 @@
     height: fit-content;
     border: 10px solid red;
   }
-}
+
 
 /* @media (orientation: portrait) {
   @media (-webkit-device-pixel-ratio: 3) {
