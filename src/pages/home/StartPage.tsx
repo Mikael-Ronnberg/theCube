@@ -9,7 +9,7 @@ import { Developer, HomeHeading, HomeSubText } from "./startPageStyles";
 export const StartPage = () => {
   return (
     <>
-      <MainContainer>
+      <MainContainer style={{ border: "2px solid white" }}>
         <TextContainer>
           <HomeHeading>
             Web <Developer>Developer</Developer>
