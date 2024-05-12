@@ -19,7 +19,9 @@ export const useCubeSizeAndPositions = () => {
 
     const halfDepth = newSize[2] / 2 + 0.01;
 
-    const measureWindowHeight = () => {
+    console.log(window.screen.width);
+
+    if (window.screen.width < 768) {
       const newHtmlPositions = {
         side1: [-0.15, 0, halfDepth] as [number, number, number],
         side2: [-0.15, halfDepth, 0] as [number, number, number],
@@ -27,18 +29,6 @@ export const useCubeSizeAndPositions = () => {
         side4: [-0.15, -halfDepth, 0] as [number, number, number],
       };
       setHtmlPositions(newHtmlPositions);
-    };
-
-    window.requestAnimationFrame(measureWindowHeight);
-    const handleResize = () => {
-      measureWindowHeight();
-    };
-
-    if (window.screen.width < 768) {
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
     } else {
       const newHtmlPositions = {
         side1: [0, 0, halfDepth] as [number, number, number],
