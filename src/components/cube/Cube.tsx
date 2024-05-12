@@ -11,7 +11,6 @@ import { ProjectsPage } from "../../pages/projects/ProjectsPage";
 import { ContactPage } from "../../pages/contact/ContactPage";
 import { useRef, useState } from "react";
 import "./Cube.css";
-
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
   cubeRef: React.RefObject<Mesh>;
@@ -21,7 +20,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   const [progressAnimationExecuted, setProgressAnimationExecuted] =
     useState(false);
   const { isMoved, activeSide } = useCubeState();
-  const { cubeSize } = useCubeSizeAndPositions();
+  const { cubeSize, htmlPositions } = useCubeSizeAndPositions();
   const { activeSideIndex, setActiveSideIndex } = useNavStore();
   const { progress } = useProgress();
   const scroll = useScroll();
@@ -120,7 +119,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         distanceFactor={1.6}
         transform
         portal={{ current: scroll.fixed }}
-        position={[0, 0, cubeSize[2] / 2 + 0.01]}
+        position={htmlPositions["side1"]}
       >
         <StartPage />
       </Html>
@@ -131,7 +130,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         rotation-x={-Math.PI / 2}
         portal={{ current: scroll.fixed }}
-        position={[0, (cubeSize[1] / 2) * 1.02, 0]}
+        position={htmlPositions["side2"]}
       >
         <ContactPage />
       </Html>
@@ -142,7 +141,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         rotation-x={-Math.PI / 1}
         portal={{ current: scroll.fixed }}
-        position={[0, 0, -cubeSize[2] / 2 - 0.01]}
+        position={htmlPositions["side3"]}
       >
         <ProjectsPage />
       </Html>
@@ -153,7 +152,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         rotation-x={-Math.PI / -2}
         portal={{ current: scroll.fixed }}
-        position={[0, (-cubeSize[1] / 2) * 1.02, 0]}
+        position={htmlPositions["side4"]}
       >
         <AboutPage />
       </Html>

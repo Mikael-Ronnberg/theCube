@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useRef, useState } from "react";
-import { ScrollControls } from "@react-three/drei";
+import { Suspense, useRef } from "react";
+import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Cube } from "../cube/Cube";
 import { Mesh } from "three";
 import { FBOParticles } from "../particles/FBOParticles";
@@ -7,51 +7,21 @@ import { useCubeState } from "../../stores/cubeStore";
 import { Panel } from "../panel/Panel";
 import { Navbar } from "../navbar/Navbar";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
-import { CanvasContainer } from "./theViewStyles";
+import { CanvasContainer, ViewContainer } from "./theViewStyles";
 import { EffectComposer, Bloom, GodRays } from "@react-three/postprocessing";
-import { isMobile } from "react-device-detect";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
   const orbRef = useRef<Mesh>(null);
-  const canvasRef = useRef<HTMLDivElement>(null);
   const { isMoved } = useCubeState();
-  const [height, setHeight] = useState("100svh");
   const { currentComponent } = useDisplayComponentState();
-
-  useEffect(() => {
-    const measureCanvasHeight = () => {
-      const canvasElement = canvasRef.current;
-      let canvasHeight = 0;
-      if (canvasElement) {
-        canvasHeight = canvasElement.clientHeight;
-      }
-
-      if (canvasHeight % 2 !== 0) {
-        setHeight(`${canvasHeight - 1}px`);
-      }
-    };
-
-    window.requestAnimationFrame(measureCanvasHeight);
-    const handleResize = () => {
-      setHeight("100svh)");
-      measureCanvasHeight();
-    };
-
-    if (!isMobile) {
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
 
   return (
     <>
-      <div style={{ height: height, background: "black" }} ref={canvasRef}>
+      <ViewContainer>
         <Navbar />
         <CanvasContainer>
-          {/* <OrbitControls /> */}
+          <OrbitControls />
           <ambientLight intensity={2.5} />
 
           <mesh ref={orbRef} position={[20, 30, -48]}>
@@ -101,7 +71,7 @@ export const TheView = () => {
           </ScrollControls>
         </CanvasContainer>
         <Panel component={currentComponent} />
-      </div>
+      </ViewContainer>
     </>
   );
 };
