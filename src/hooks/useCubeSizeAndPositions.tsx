@@ -1,7 +1,5 @@
 import { useThree } from "@react-three/fiber";
 import { useState, useEffect } from "react";
-import { isMobile } from "react-device-detect";
-// import { isMobile } from "react-device-detect";
 
 export const useCubeSizeAndPositions = () => {
   const { viewport } = useThree();
@@ -10,9 +8,11 @@ export const useCubeSizeAndPositions = () => {
     [key: string]: [number, number, number];
   }>({});
 
+  console.log();
+
   useEffect(() => {
     const newWidth = viewport.width / 1.8;
-    const newHeight = viewport.height / 1.9;
+    const newHeight = viewport.height / 2;
     const newSize: [number, number, number] = [newWidth, newHeight, newHeight];
 
     setCubeSize(newSize);
@@ -20,18 +20,13 @@ export const useCubeSizeAndPositions = () => {
     const halfDepth = newSize[2] / 2 + 0.01;
 
     const measureWindowHeight = () => {
-      const screenWidth = viewport.width;
-      const screenHeight = viewport.height;
-      if (screenHeight % 2 !== 0 || screenWidth % 2 !== 0) {
-        const newHtmlPositions = {
-          side1: [-0.15, -0.09, halfDepth] as [number, number, number],
-          side2: [0, halfDepth, 0] as [number, number, number],
-          side3: [0, 0, -halfDepth] as [number, number, number],
-          side4: [0, -halfDepth, 0] as [number, number, number],
-        };
-
-        setHtmlPositions(newHtmlPositions);
-      }
+      const newHtmlPositions = {
+        side1: [-0.15, 0, halfDepth] as [number, number, number],
+        side2: [-0.15, halfDepth, 0] as [number, number, number],
+        side3: [-0.15, 0, -halfDepth] as [number, number, number],
+        side4: [-0.15, -halfDepth, 0] as [number, number, number],
+      };
+      setHtmlPositions(newHtmlPositions);
     };
 
     window.requestAnimationFrame(measureWindowHeight);
@@ -39,7 +34,7 @@ export const useCubeSizeAndPositions = () => {
       measureWindowHeight();
     };
 
-    if (isMobile) {
+    if (window.screen.width < 768) {
       window.addEventListener("resize", handleResize);
       return () => {
         window.removeEventListener("resize", handleResize);

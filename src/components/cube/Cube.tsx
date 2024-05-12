@@ -110,7 +110,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
   });
 
   return (
-    <mesh ref={cubeRef} visible position={[0, -0.3, -30]}>
+    <mesh ref={cubeRef} visible position={[0, -0.2, -30]}>
       <boxGeometry args={cubeSize} />
       <meshStandardMaterial metalness={1} roughness={0.01} color="#05050f" />
       <Html
