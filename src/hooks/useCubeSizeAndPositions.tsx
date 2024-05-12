@@ -1,5 +1,6 @@
 import { useThree } from "@react-three/fiber";
 import { useState, useEffect } from "react";
+import { isMobile } from "react-device-detect";
 // import { isMobile } from "react-device-detect";
 
 export const useCubeSizeAndPositions = () => {
@@ -18,34 +19,40 @@ export const useCubeSizeAndPositions = () => {
 
     const halfDepth = newSize[2] / 2 + 0.01;
 
-    // const measureWindowHeight = () => {
-    //   const screenWidth = window.screen.width;
-    //   const screenHeight = window.screen.height;
+    const measureWindowHeight = () => {
+      const screenWidth = viewport.width;
+      const screenHeight = viewport.height;
+      if (screenHeight % 2 !== 0 || screenWidth % 2 !== 0) {
+        const newHtmlPositions = {
+          side1: [-0.3, -0.5, halfDepth] as [number, number, number],
+          side2: [0, halfDepth, 0] as [number, number, number],
+          side3: [0, 0, -halfDepth] as [number, number, number],
+          side4: [0, -halfDepth, 0] as [number, number, number],
+        };
 
-    //   if (screenHeight % 2 !== 0 || screenWidth % 2 !== 0) {
-
-    //   }
-    // };
-
-    // window.requestAnimationFrame(measureWindowHeight);
-    // const handleResize = () => {
-    //   measureWindowHeight();
-    // };
-
-    // if (!isMobile) {
-    //   window.addEventListener("resize", handleResize);
-    //   return () => {
-    //     window.removeEventListener("resize", handleResize);
-    //   };
-    // }
-    const newHtmlPositions = {
-      side1: [0, 0, halfDepth] as [number, number, number],
-      side2: [0, halfDepth, 0] as [number, number, number],
-      side3: [0, 0, -halfDepth] as [number, number, number],
-      side4: [0, -halfDepth, 0] as [number, number, number],
+        setHtmlPositions(newHtmlPositions);
+      }
     };
 
-    setHtmlPositions(newHtmlPositions);
+    window.requestAnimationFrame(measureWindowHeight);
+    const handleResize = () => {
+      measureWindowHeight();
+    };
+
+    if (isMobile) {
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    } else {
+      const newHtmlPositions = {
+        side1: [0, 0, halfDepth] as [number, number, number],
+        side2: [0, halfDepth, 0] as [number, number, number],
+        side3: [0, 0, -halfDepth] as [number, number, number],
+        side4: [0, -halfDepth, 0] as [number, number, number],
+      };
+      setHtmlPositions(newHtmlPositions);
+    }
   }, [viewport]);
 
   return { cubeSize, htmlPositions };
