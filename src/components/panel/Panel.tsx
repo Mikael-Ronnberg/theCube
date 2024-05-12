@@ -20,7 +20,7 @@ export const Panel = ({ component }: PanelProps) => {
       data-augmented-ui="
   tl-2-clip-y bl-clip border"
     >
-      <div>{component}</div>
+      {component}
     </PanelContainer>
   );
 };

@@ -34,12 +34,39 @@ export const ProjectsContainer = styled.div`
 `;
 
 export const DisplayContainer = styled.div`
-  width: inherit;
-  height: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
+  margin: 1rem;
+  width: 95%;
+  height: 84%;
+
+  --aug-tr: 7px;
+  --aug-tl: 7px;
+  --aug-t: 20px;
+
+  --aug-br: 10px;
+  --aug-bl: 10px;
+  --aug-b: 5px;
+
+  --aug-t-extend1: 30%;
+  --aug-b-extend1: 30%;
+  --aug-border-all: 1px;
+  --aug-border-bg: white;
+
+  --aug-inlay-all: 16px;
+  --aug-inlay-bg: radial-gradient(at top right, pink 25%, black 75%);
+  --aug-inlay-opacity: 0.1;
+  --aug-border-opacity: 0.4;
+
+  @media (min-width: 768px) {
+    --aug-inlay-bg: radial-gradient(at top center, pink 25%, black 75%);
+  }
+  @media (min-width: 992px) {
+    --aug-inlay-bg: radial-gradient(at top left, pink 25%, black 75%);
+  }
 `;
 
 export const ContactHeaderContainer = styled.div`

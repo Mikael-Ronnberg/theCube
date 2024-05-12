@@ -6,7 +6,11 @@ export const Navbar = () => {
   const setActiveSideIndex = useNavStore((state) => state.setActiveSideIndex);
 
   return (
-    <NavbarContainer>
+    <NavbarContainer
+      data-augmented-ui="
+    br-clip-x b-scoop-x bl-clip-x border
+  "
+    >
       <span onClick={() => setActiveSideIndex(0)}>
         <Logo />
       </span>

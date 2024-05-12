@@ -7,6 +7,7 @@ import {
   ContactInput,
   ContactTextarea,
   ContactButton,
+  ContactOuterLayer,
 } from "./contactStyles";
 
 export const ViewContact = () => {
@@ -75,52 +76,48 @@ export const ViewContact = () => {
     </ContactHeading>
   ) : (
     <>
-      <ContactForm
-        ref={formRef}
-        onSubmit={handleSubmit}
+      <ContactOuterLayer
         data-augmented-ui="
-  tl-round-y tr-scoop br-2-clip-x bl-round-x border
-"
+        tl-2-clip-x t-clip-x tr-2-clip-x br-clip b-clip-y bl-clip both
+      "
       >
-        <ContactLabel
-          data-augmented-ui="
-  tl-clip-inset tr-clip both
-"
-        >
-          <ContactHeading>Your Name</ContactHeading>
-          <ContactInput
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Name"
-          />
-        </ContactLabel>
-        <ContactLabel>
-          <ContactHeading>Your email</ContactHeading>
-          <ContactInput
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="email"
-          />
-        </ContactLabel>
-        <ContactLabel>
-          <ContactHeading>Your Message</ContactHeading>
-          <ContactTextarea
-            rows={7}
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Message"
-          />
-        </ContactLabel>
+        <ContactForm ref={formRef} onSubmit={handleSubmit}>
+          <ContactLabel>
+            <ContactHeading>Your Name</ContactHeading>
+            <ContactInput
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Name"
+            />
+          </ContactLabel>
+          <ContactLabel>
+            <ContactHeading>Your email</ContactHeading>
+            <ContactInput
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="email"
+            />
+          </ContactLabel>
+          <ContactLabel>
+            <ContactHeading>Your Message</ContactHeading>
+            <ContactTextarea
+              rows={7}
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              placeholder="Message"
+            />
+          </ContactLabel>
 
-        <ContactButton type="submit">
-          {loading ? "Sending..." : "Send"}
-        </ContactButton>
-      </ContactForm>
+          <ContactButton type="submit">
+            {loading ? "Sending..." : "Send"}
+          </ContactButton>
+        </ContactForm>
+      </ContactOuterLayer>
     </>
   );
 };

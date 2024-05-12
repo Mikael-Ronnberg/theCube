@@ -88,7 +88,11 @@ export const ViewProject = ({ project }: ViewProjectProps) => {
   const { name, description, tags, image, code_link } = project;
   return (
     <>
-      <DisplayContainer>
+      <DisplayContainer
+        data-augmented-ui="
+        tl-2-clip-x t-clip-x tr-2-clip-x br-clip b-clip-y bl-clip both
+      "
+      >
         <ProjectHeader>{name}</ProjectHeader>
         <ProjectImage src={image} alt={name} />
         <ProjectText>{description}</ProjectText>

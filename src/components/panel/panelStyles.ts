@@ -13,10 +13,9 @@ export const PanelContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: auto;
   transition: transform 0.6s ease;
 
-  --aug-border-bg: radial-gradient(at top center, pink 25%, transparent 50%),
+  --aug-border-bg: radial-gradient(at top right, pink 25%, transparent 50%),
     skyblue 50% 50% / 100% 100%;
 
   --aug-border-all: 2px;
@@ -32,9 +31,13 @@ export const PanelContainer = styled.div`
     width: 65vw;
   }
   @media (min-width: 768px) {
+    --aug-border-bg: radial-gradient(at top center, pink 25%, transparent 50%),
+      skyblue 50% 50% / 100% 100%;
     width: 55vw;
   }
   @media (min-width: 992px) {
+    --aug-border-bg: radial-gradient(at top left, pink 25%, transparent 50%),
+      skyblue 50% 50% / 100% 100%;
     width: 50vw;
   }
 `;
