@@ -37,14 +37,12 @@ export const ProjectsPage = () => {
       <MainContainer>
         <ProjectsContainer>
           <TextContainer>
-            <NormalHeader>My Works</NormalHeader>
+            <NormalHeader>Projects</NormalHeader>
             <NormalText>
-              My portfolio highlights the breadth and depth of my expertise
-              through tangible examples of my projects. Each entry provides a
-              description along with links to the associated code repositories.
-              These selections exemplify my aptitude for tackling intricate
-              challenges, adeptly employing various technologies, and
-              efficiently overseeing projects.
+              These are some of my highlights, each entry provides a description
+              along with links to the associated code repositories and live
+              site. These selections exemplify some of the works and techniques
+              that we dwelved into during my education at Medieinstitutet.
             </NormalText>
           </TextContainer>
 
