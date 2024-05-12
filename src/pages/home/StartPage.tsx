@@ -21,7 +21,7 @@ export const StartPage = () => {
         </TextContainer>
       </MainContainer>
 
-      <HexagonLayout items={technologies} />
+      {/* <HexagonLayout items={technologies} /> */}
     </>
   );
 };
