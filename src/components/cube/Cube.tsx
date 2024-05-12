@@ -10,6 +10,7 @@ import { useNavStore } from "../../stores/navStore";
 import { ProjectsPage } from "../../pages/projects/ProjectsPage";
 import { ContactPage } from "../../pages/contact/ContactPage";
 import { useRef, useState } from "react";
+import "./Cube.css";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
@@ -114,7 +115,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
       <boxGeometry args={cubeSize} />
       <meshStandardMaterial metalness={1} roughness={0.01} color="#05050f" />
       <Html
-        style={{ width: "100vw", height: "100vh", position: "relative" }}
+        className="cube-side"
         occlude
         distanceFactor={1.6}
         transform

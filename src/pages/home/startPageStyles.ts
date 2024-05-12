@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HomeHeading = styled.h1`
   font-weight: bold;
   font-size: 5rem;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 
   @media (min-width: 480px) {
     font-size: 7rem;

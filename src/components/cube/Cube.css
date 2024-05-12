@@ -1,0 +1,17 @@
+
+
+@media (-webkit-device-pixel-ratio: 3) {
+  .cube-side {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@media (orientation: portrait) {
+  @media (-webkit-device-pixel-ratio: 3) {
+    .cube-side {
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+}
