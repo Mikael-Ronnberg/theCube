@@ -6,12 +6,9 @@ interface NormalButtonProps {
 
 export const NormalButton = styled.button<NormalButtonProps>`
   color: white;
-  width: 30%;
-  text-align: center;
+  border-radius: 5px;
   background-color: black;
-  border: 1px solid skyblue;
+  border: 2px solid skyblue;
   padding: 10px 20px;
   cursor: pointer;
-  bottom: 37px;
-  --aug-border-all: 1px;
 `;
