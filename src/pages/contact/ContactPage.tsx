@@ -1,10 +1,9 @@
-import { ContactOuterLayer } from "../../components/ui/augmentedStyles/augmentedContactStyles";
 import { NormalButton } from "../../components/ui/buttonStyles";
 import {
-  ContactHeaderContainer,
   MainContainer,
+  TextContainer,
 } from "../../components/ui/containerStyles";
-import { ContactHeader } from "../../components/ui/headerStyles";
+import { NormalHeader } from "../../components/ui/headerStyles";
 import { NormalText } from "../../components/ui/textStyles";
 import { useCubeState } from "../../stores/cubeStore";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
@@ -21,26 +20,15 @@ export const ContactPage = () => {
   };
   return (
     <MainContainer>
-      <ContactHeaderContainer
-        data-augmented-ui="
-  bl-clip br-clip both
-"
-      >
-        <ContactHeader>Contact</ContactHeader>
-      </ContactHeaderContainer>
+      <TextContainer>
+        <NormalHeader>Contact</NormalHeader>
+      </TextContainer>
 
-      <ContactOuterLayer sideText="ContactPage.tsx">
-        <NormalText>Don't be a stranger. Get in touch!</NormalText>
-      </ContactOuterLayer>
+      {/* <ContactOuterLayer sideText="ContactPage.tsx"> */}
+      <NormalText>Don't be a stranger. Get in touch!</NormalText>
+      {/* </ContactOuterLayer> */}
 
-      <NormalButton
-        onClick={() => HandleContactClick()}
-        data-augmented-ui="
-  tl-clip tr-clip both
-"
-      >
-        Message
-      </NormalButton>
+      <NormalButton onClick={() => HandleContactClick()}>Message</NormalButton>
     </MainContainer>
   );
 };
