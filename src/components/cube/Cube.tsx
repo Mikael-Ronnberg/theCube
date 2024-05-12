@@ -10,7 +10,7 @@ import { useNavStore } from "../../stores/navStore";
 import { ProjectsPage } from "../../pages/projects/ProjectsPage";
 import { ContactPage } from "../../pages/contact/ContactPage";
 import { useRef, useState } from "react";
-import "./Cube.css";
+
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
   cubeRef: React.RefObject<Mesh>;

@@ -6,7 +6,7 @@ export const PanelContainer = styled.div`
   right: 0;
   z-index: 20;
   width: 70vw;
-  height: 85vh;
+  height: 85svh;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   display: flex;
