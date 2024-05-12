@@ -24,7 +24,7 @@ export const useCubeSizeAndPositions = () => {
       const screenHeight = viewport.height;
       if (screenHeight % 2 !== 0 || screenWidth % 2 !== 0) {
         const newHtmlPositions = {
-          side1: [-0.3, -0.5, halfDepth] as [number, number, number],
+          side1: [-0.03, -0.05, halfDepth] as [number, number, number],
           side2: [0, halfDepth, 0] as [number, number, number],
           side3: [0, 0, -halfDepth] as [number, number, number],
           side4: [0, -halfDepth, 0] as [number, number, number],
