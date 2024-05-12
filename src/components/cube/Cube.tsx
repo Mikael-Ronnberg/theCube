@@ -118,7 +118,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         distanceFactor={1.8}
         transform
         portal={{ current: scroll.fixed }}
-        position={htmlPositions["side1"]}
+        position={htmlPositions["home"]}
       >
         <StartPage />
       </Html>
@@ -126,11 +126,11 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         occlude
         distanceFactor={1.8}
         transform
-        rotation-x={-Math.PI / 2}
+        rotation-x={-Math.PI / -2}
         portal={{ current: scroll.fixed }}
-        position={htmlPositions["side2"]}
+        position={htmlPositions["about"]}
       >
-        <ContactPage />
+        <AboutPage />
       </Html>
       <Html
         occlude
@@ -138,7 +138,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         transform
         rotation-x={-Math.PI / 1}
         portal={{ current: scroll.fixed }}
-        position={htmlPositions["side3"]}
+        position={htmlPositions["works"]}
       >
         <ProjectsPage />
       </Html>
@@ -146,11 +146,11 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         occlude
         distanceFactor={1.8}
         transform
-        rotation-x={-Math.PI / -2}
+        rotation-x={-Math.PI / 2}
         portal={{ current: scroll.fixed }}
-        position={htmlPositions["side4"]}
+        position={htmlPositions["contact"]}
       >
-        <AboutPage />
+        <ContactPage />
       </Html>
     </mesh>
   );
