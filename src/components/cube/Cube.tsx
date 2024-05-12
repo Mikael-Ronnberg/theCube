@@ -133,6 +133,7 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         portal={{ current: scroll.fixed }}
         position={[0, (cubeSize[1] / 2) * 1.02, 0]}
       >
+        <div style={{ width: "100vw" }}>content</div>
         <ContactPage />
       </Html>
       <Html
