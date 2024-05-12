@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export const HomeHeading = styled.h1`
   font-weight: bold;
-  font-size: 5rem;
+  font-size: 4.5rem;
+  margin-left: 1rem;
   /* margin-bottom: 3rem; */
 
   @media (min-width: 480px) {
-    font-size: 7rem;
+    font-size: 6rem;
   }
   @media (min-width: 768px) {
-    font-size: 9rem;
+    font-size: 8rem;
   }
 `;
 

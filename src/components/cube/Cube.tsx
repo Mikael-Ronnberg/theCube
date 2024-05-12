@@ -109,14 +109,15 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     }
   });
 
+  console.log(cubeSize[1]);
+
   return (
     <mesh ref={cubeRef} visible position={[0, -0.2, -30]}>
       <boxGeometry args={cubeSize} />
       <meshStandardMaterial metalness={1} roughness={0.01} color="#05050f" />
       <Html
-        className="cube-side"
         occlude
-        distanceFactor={1.6}
+        distanceFactor={1.8}
         transform
         portal={{ current: scroll.fixed }}
         position={htmlPositions["side1"]}
@@ -124,7 +125,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <StartPage />
       </Html>
       <Html
-        className="cube-side"
         occlude
         distanceFactor={1.8}
         transform
@@ -135,7 +135,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ContactPage />
       </Html>
       <Html
-        className="cube-side"
         occlude
         distanceFactor={1.8}
         transform
@@ -146,7 +145,6 @@ export const Cube = ({ cubeRef }: CubeProps) => {
         <ProjectsPage />
       </Html>
       <Html
-        className="cube-side"
         occlude
         distanceFactor={1.8}
         transform

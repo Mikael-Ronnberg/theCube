@@ -8,8 +8,6 @@ export const useCubeSizeAndPositions = () => {
     [key: string]: [number, number, number];
   }>({});
 
-  console.log();
-
   useEffect(() => {
     const newWidth = viewport.width / 1.8;
     const newHeight = viewport.height / 2;
@@ -18,8 +16,6 @@ export const useCubeSizeAndPositions = () => {
     setCubeSize(newSize);
 
     const halfDepth = newSize[2] / 2 + 0.01;
-
-    console.log(window.screen.width);
 
     if (window.screen.width < 768) {
       const newHtmlPositions = {
