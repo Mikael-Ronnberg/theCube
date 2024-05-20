@@ -8,6 +8,7 @@ export const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  /* margin-left: 2rem; */
 `;
 
 export const TextContainer = styled.div`
@@ -23,13 +24,13 @@ export const ServiceCardContainer = styled.div`
 `;
 
 export const ProjectsContainer = styled.div`
-  width: inherit;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 1rem;
+  grid-gap: 4rem;
   @media (min-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2rem;
+    grid-gap: 3rem;
   }
 `;
 

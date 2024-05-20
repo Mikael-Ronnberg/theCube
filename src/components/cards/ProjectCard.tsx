@@ -2,52 +2,99 @@ import styled from "styled-components";
 
 export const CardContainer = styled.section`
   --Nhexa: 4;
-  --gap: 2vw;
-  --size: calc(calc(600px / var(--Nhexa)) - var(--gap));
-
+  --gap: 2.3vw;
+  --size: calc(calc(480px / var(--Nhexa)) - var(--gap));
   margin: calc(var(--size) * 0.5) auto 0;
   width: calc(var(--size) * calc(var(--Nhexa) - 1));
+  padding-left: 3rem;
   display: grid;
+  align-self: center;
   grid-template-columns: repeat(var(--Nhexa), 1fr);
   grid-gap: var(--gap);
-  position: relative;
 
   @media (min-width: 480px) {
-    --size: calc(calc(800px / var(--Nhexa)) - var(--gap));
+    --gap: 3.3vw;
+    --size: calc(calc(600px / var(--Nhexa)) - var(--gap));
   }
   @media (min-width: 768px) {
-    --size: calc(calc(600px / var(--Nhexa)) - var(--gap));
+    --gap: 4.3vw;
+    --size: calc(calc(800px / var(--Nhexa)) - var(--gap));
   }
   @media (min-width: 992px) {
     --size: calc(calc(1000px / var(--Nhexa)) - var(--gap));
   }
 `;
 
-export const ProjectCardContainer = styled.article`
+const ProjectCardContainer = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #6c6d6d1a;
+
+  --aug-all-width: 120px;
+  overflow: visible;
+  cursor: pointer;
   width: var(--size);
-  height: calc(var(--size) / 1.1111111);
-  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  height: calc(var(--size) / 1.111111);
   margin-right: calc(var(--size) / 2);
 
   &:nth-child(2n) {
     margin: calc(var(--size) * -0.5) calc(var(--size) * -0.25) 0
       calc(var(--size) * -0.75);
   }
+
+  @media (min-width: 480px) {
+    --aug-all-width: 130px;
+  }
+  @media (min-width: 768px) {
+    --aug-all-width: 170px;
+  }
+  @media (min-width: 992px) {
+    --aug-all-width: 200px;
+  }
 `;
 
-export const ProjectCardHeader = styled.h2`
-  font-size: 1.3rem;
+const ProjectCardHeader = styled.h2`
+  min-width: max-content;
+  padding: 0.25rem 0.15rem;
+  position: relative;
+  font-size: 1.1rem;
   font-weight: bold;
   margin: 0.5rem 0;
+  top: 6rem;
+  left: -1.5rem;
+
+  @media (min-width: 480px) {
+    top: 6rem;
+    left: -2rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+    top: 7rem;
+    left: -2.5rem;
+  }
+  @media (min-width: 992px) {
+    top: -7rem;
+    left: -3.3rem;
+  }
 `;
 
-export const ProjectCardImage = styled.img`
-  width: 20vw;
+const ProjectCardImage = styled.img`
+  width: 150px;
+  height: 100px;
+
+  @media (min-width: 480px) {
+    width: 170px;
+    height: 120px;
+  }
+  @media (min-width: 768px) {
+    width: 230px;
+    height: 170px;
+  }
+  @media (min-width: 992px) {
+    width: 260px;
+    height: 180px;
+  }
 `;
 
 type ProjectCardProps = {
@@ -63,9 +110,14 @@ export const ProjectCard = ({ name, image, onClick }: ProjectCardProps) => {
   };
   return (
     <>
-      <ProjectCardContainer onClick={handleClick}>
+      <ProjectCardContainer>
         <ProjectCardHeader>{name}</ProjectCardHeader>
-        <ProjectCardImage src={image} alt={name} />
+        <ProjectCardContainer
+          onClick={handleClick}
+          data-augmented-ui="all-hex-alt border"
+        >
+          <ProjectCardImage src={image} alt={name} />
+        </ProjectCardContainer>
       </ProjectCardContainer>
     </>
   );

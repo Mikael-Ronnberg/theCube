@@ -46,7 +46,7 @@ export const ProjectsPage = () => {
             </NormalText>
           </TextContainer>
 
-          <CardContainer>
+          <CardContainer data-augmented-ui-reset="">
             {projects.map((project, index) => (
               <ProjectCard
                 key={`project-${index}`}

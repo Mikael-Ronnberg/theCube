@@ -16,8 +16,6 @@ export const NavbarContainer = styled.nav`
 
   --aug-bl-extend2: 2%;
   --aug-br-extend2: 2%;
-  --aug-b-extend1: 20%;
-  --aug-b: 5px;
   --aug-bl: 10px;
   --aug-br: 10px;
 
