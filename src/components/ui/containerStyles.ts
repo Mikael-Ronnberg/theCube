@@ -4,23 +4,43 @@ export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   /* margin-left: 2rem; */
+
+  @media (min-width: 480px) {
+  }
+  @media (min-width: 768px) {
+  }
 `;
 
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin: 0 3rem;
+
+  @media (min-width: 480px) {
+    margin: 0 4rem;
+  }
+  @media (min-width: 768px) {
+    margin: 0 2rem;
+  }
 `;
 
 export const ServiceCardContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: inherit;
+
+  flex-wrap: wrap;
+  @media (min-width: 480px) {
+  }
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ProjectsContainer = styled.div`

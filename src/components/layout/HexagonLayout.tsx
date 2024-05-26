@@ -20,9 +20,20 @@ const HexagonGridContainer = styled.section`
   grid-template-columns: repeat(var(--Nhexa), 1fr);
   grid-gap: var(--gap);
   position: relative;
-  /* bottom: 600px; */
-  /* left: -20px; */
+  bottom: 600px;
+  left: -20px;
   z-index: -2;
+
+  @media (min-width: 480px) {
+    --size: calc(calc(600px / var(--Nhexa)) - var(--gap));
+    bottom: 640px;
+    left: -24px;
+  }
+  @media (min-width: 768px) {
+    --size: calc(calc(900px / var(--Nhexa)) - var(--gap));
+    bottom: 750px;
+    left: -30px;
+  }
 `;
 
 const Article = styled.article`

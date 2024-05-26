@@ -9,6 +9,7 @@ const HobbyCard = styled.div`
   height: 70px;
   width: 90px;
   border-radius: 3%;
+  flex: 25%;
 
   @media (min-width: 480px) {
     height: 90px;
@@ -19,6 +20,7 @@ const HobbyCard = styled.div`
   }
 
   @media (min-width: 768px) {
+    flex: 50%;
     height: 200px;
     width: 250px;
   }
