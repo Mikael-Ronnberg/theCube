@@ -10,9 +10,9 @@ interface HexagonGridProps {
 }
 
 const HexagonGridContainer = styled.section`
-  --Nhexa: 4;
+  --Nhexa: 6;
   --gap: 2vw;
-  --size: calc(calc(400px / var(--Nhexa)) - var(--gap));
+  --size: calc(calc(450px / var(--Nhexa)) - var(--gap));
 
   margin: calc(var(--size) * 0.5) auto 0;
   width: calc(var(--size) * calc(var(--Nhexa) - 1));
@@ -20,18 +20,23 @@ const HexagonGridContainer = styled.section`
   grid-template-columns: repeat(var(--Nhexa), 1fr);
   grid-gap: var(--gap);
   position: relative;
-  bottom: 500px;
-  left: -20px;
+  bottom: 470px;
+  left: -15px;
   z-index: -2;
 
   @media (min-width: 480px) {
     --size: calc(calc(600px / var(--Nhexa)) - var(--gap));
-    bottom: 640px;
+    bottom: 520px;
     left: -24px;
   }
   @media (min-width: 768px) {
     --size: calc(calc(900px / var(--Nhexa)) - var(--gap));
-    bottom: 750px;
+    bottom: 580px;
+    left: -30px;
+  }
+  @media (min-width: 992px) {
+    --size: calc(calc(1100px / var(--Nhexa)) - var(--gap));
+    bottom: 580px;
     left: -30px;
   }
 `;

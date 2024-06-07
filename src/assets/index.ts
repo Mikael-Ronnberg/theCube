@@ -20,6 +20,9 @@ import reactjs from "./tech/reactjs.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import php from "./tech/php.png";
+import wordpress from "./tech/Wordpress.png";
+import jquery from "./tech/jquery.png";
 
 import ppd from "./work/ppd.png";
 import todo from "./work/todo.png";
@@ -48,6 +51,9 @@ export {
   tailwind,
   typescript,
   threejs,
+  php,
+  wordpress,
+  jquery,
   ppd,
   todo,
   sb,

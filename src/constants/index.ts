@@ -20,6 +20,9 @@ import {
   ppd,
   todo,
   sb,
+  wordpress,
+  php,
+  jquery,
 } from "../assets";
 
 const services = [
@@ -90,6 +93,9 @@ const technologies = [
     name: "docker",
     icon: docker,
   },
+  { name: "wordpress", icon: wordpress },
+  { name: "php", icon: php },
+  { name: "jquery", icon: jquery },
 ];
 
 const experiences = [
