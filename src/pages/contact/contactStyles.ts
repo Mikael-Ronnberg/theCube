@@ -11,7 +11,7 @@ export const ContactOuterLayer = styled.div`
   overflow: hidden;
 
   --aug-tr: 7px;
-  --aug-tl: 7px;
+  --aug-tl: 30px;
   --aug-t: 5px;
 
   --aug-br: 10px;

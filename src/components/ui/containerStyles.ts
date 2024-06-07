@@ -57,18 +57,19 @@ export const ProjectsContainer = styled.div`
 `;
 
 export const DisplayContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem 1rem;
   margin: 1rem;
   width: 95%;
   height: 84%;
 
   --aug-tr: 7px;
-  --aug-tl: 7px;
-  --aug-t: 20px;
+  --aug-tl: 5px;
+  --aug-t: 5px;
 
   --aug-br: 10px;
   --aug-bl: 10px;

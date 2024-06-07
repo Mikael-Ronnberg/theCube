@@ -3,111 +3,124 @@ import { DisplayContainer } from "../../components/ui/containerStyles";
 import { Project } from "./ProjectsPage";
 
 const ProjectImage = styled.img`
-  width: 200px;
+  justify-self: center;
+  width: auto;
   height: 110px;
+  padding: 0.5rem 0;
   grid-column: span 2;
   @media (min-width: 480px) {
-    width: 300px;
     height: 160px;
   }
   @media (min-width: 768px) {
-    width: 400px;
+    height: 200px;
+  }
+  @media (min-width: 992px) {
     height: 230px;
   }
 `;
 
 const ProjectHeader = styled.h2`
   font-size: 1rem;
-  margin: 1.4rem;
+  margin: 0.5rem 0rem;
   grid-column: span 2;
   color: skyblue;
   text-align: left;
 
   @media (min-width: 480px) {
     font-size: 1.3rem;
+    margin: 1rem 0.1rem;
   }
   @media (min-width: 768px) {
     font-size: 1.6rem;
+    margin: 1rem 0.3rem;
   }
 `;
 
-const TextTag = styled.p`
+const TextTag = styled.h4`
   font-size: 0.8rem;
-  margin: 1rem 2rem;
-  width: 200px;
+  margin: 0.5rem 0;
+  margin-right: 1rem;
   color: skyblue;
-  grid-column: span 20%;
 
   @media (min-width: 480px) {
-    width: 300px;
     font-size: 1rem;
-    margin: 1rem 1.8rem;
+    margin: 1rem 0.1rem;
   }
 
   @media (min-width: 768px) {
     font-size: 1.1rem;
-    margin: 1rem 1.5rem;
-    width: 400px;
+    margin: 1rem 0.3rem;
   }
 `;
 
 const ProjectText = styled.p`
   font-size: 0.8rem;
-  margin: 1rem 2rem;
-  width: 200px;
-  grid-column: span 1.5;
+  margin: 0.5rem 0;
+  margin-left: 0.5rem;
 
   @media (min-width: 480px) {
-    width: 300px;
     font-size: 1rem;
-    margin: 1rem 1.8rem;
+    margin: 1rem 0;
   }
 
   @media (min-width: 768px) {
     font-size: 1.1rem;
-    margin: 1rem 1.5rem;
-    width: 400px;
+  }
+`;
+const ProjectLinkText = styled.a`
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  margin-left: 0.5rem;
+
+  @media (min-width: 480px) {
+    font-size: 0.8rem;
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.1rem;
   }
 `;
 
 export const TagContainers = styled.div`
   display: flex;
-  margin: 0.8rem 0;
-  padding: 0.3rem;
+  margin: 0.5rem 0;
   align-items: center;
-  justify-content: flex-end;
-  max-width: 200px;
+  flex-wrap: wrap;
+
   @media (min-width: 480px) {
-    max-width: 300px;
   }
   @media (min-width: 768px) {
-    max-width: 400px;
   }
 `;
 
 const ContentWrapper = styled.div`
-  width: 50%;
+  width: 100%;
   height: auto;
   overflow: scroll;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 20% 80%;
+  gap: 0;
+
+  @media (min-width: 480px) {
+    /* grid-template-columns: 20% 89%; */
+  }
+  @media (min-width: 768px) {
+    /* max-width: 400px; */
+  }
 `;
 
 export const Tag = styled.p`
-  padding: 0.3rem 0.6rem;
+  padding: 0.3rem 0.3rem;
   color: ${(props) => props.color};
-  font-size: 0.8rem;
-  width: 200px;
+  font-size: 0.7rem;
 
   @media (min-width: 480px) {
-    width: 300px;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
   }
 
   @media (min-width: 768px) {
     font-size: 1rem;
-    width: 400px;
   }
 `;
 
@@ -128,7 +141,7 @@ export const ViewProject = ({ project }: ViewProjectProps) => {
           <ProjectHeader>{name}</ProjectHeader>
           <ProjectImage src={image} alt={name} />
 
-          <TextTag>Desc. :</TextTag>
+          <TextTag>Desc.:</TextTag>
           <ProjectText>{description}</ProjectText>
           <TextTag>Tech:</TextTag>
           <TagContainers>
@@ -139,9 +152,9 @@ export const ViewProject = ({ project }: ViewProjectProps) => {
             ))}
           </TagContainers>
           <TextTag>Git: </TextTag>
-          <a href={code_link} target="blank">
+          <ProjectLinkText href={code_link} target="blank">
             {name}
-          </a>
+          </ProjectLinkText>
           <TextTag>Live: </TextTag>
           <ProjectText>Live Site</ProjectText>
         </ContentWrapper>
