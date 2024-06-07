@@ -20,6 +20,8 @@ export type Project = {
   }[];
   image: string;
   code_link: string;
+  live_link: string;
+  live_name: string;
 };
 
 export const ProjectsPage = () => {

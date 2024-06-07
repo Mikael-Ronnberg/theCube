@@ -129,7 +129,8 @@ type ViewProjectProps = {
 };
 
 export const ViewProject = ({ project }: ViewProjectProps) => {
-  const { name, description, tags, image, code_link } = project;
+  const { name, description, tags, image, code_link, live_link, live_name } =
+    project;
   return (
     <>
       <DisplayContainer
@@ -156,7 +157,9 @@ export const ViewProject = ({ project }: ViewProjectProps) => {
             {name}
           </ProjectLinkText>
           <TextTag>Live: </TextTag>
-          <ProjectText>Live Site</ProjectText>
+          <ProjectLinkText href={live_link} target="blank">
+            {live_name}
+          </ProjectLinkText>
         </ContentWrapper>
       </DisplayContainer>
     </>

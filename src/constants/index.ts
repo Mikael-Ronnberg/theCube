@@ -151,6 +151,8 @@ const projects = [
     ],
     image: ppd,
     code_link: "https://github.com/Mikael-Ronnberg/Yet-Another-Webshop",
+    live_link: "https://plant-dad-depot.pages.dev",
+    live_name: "plant-dad-depot.pages.dev",
   },
   {
     name: "Todo List",
@@ -168,6 +170,8 @@ const projects = [
     ],
     image: todo,
     code_link: "https://github.com/Mikael-Ronnberg/Todo-List",
+    live_link: "https://retro-todo-list.pages.dev",
+    live_name: "retro-todo-list.pages.dev",
   },
   {
     name: "Svepa Botten",
@@ -188,7 +192,9 @@ const projects = [
       },
     ],
     image: sb,
-    code_link: "https://github.com/Mikael-Ronnberg/TicTacToe-React",
+    code_link: "https://github.com/Mikael-Ronnberg/degree-project",
+    live_link: "https://svepa-botten.pages.dev/",
+    live_name: "svepa-botten.pages.dev",
   },
 ];
 
