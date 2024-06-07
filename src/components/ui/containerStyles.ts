@@ -34,12 +34,14 @@ export const TextContainer = styled.div`
 export const ServiceCardContainer = styled.div`
   display: flex;
   justify-content: space-between;
-
   flex-wrap: wrap;
   @media (min-width: 480px) {
   }
   @media (min-width: 768px) {
-    flex-wrap: wrap;
+    margin-top: -3rem;
+  }
+  @media (min-width: 992px) {
+    margin-top: 0;
   }
 `;
 

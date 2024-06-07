@@ -10,13 +10,14 @@ import { useNavStore } from "../../stores/navStore";
 import { ProjectsPage } from "../../pages/projects/ProjectsPage";
 import { ContactPage } from "../../pages/contact/ContactPage";
 import { useRef, useState } from "react";
+import React from "react";
 
 const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 interface CubeProps {
   cubeRef: React.RefObject<Mesh>;
 }
 
-export const Cube = ({ cubeRef }: CubeProps) => {
+const CubeComponent = ({ cubeRef }: CubeProps) => {
   const [progressAnimationExecuted, setProgressAnimationExecuted] =
     useState(false);
   const { isMoved, activeSide } = useCubeState();
@@ -159,3 +160,5 @@ export const Cube = ({ cubeRef }: CubeProps) => {
     </mesh>
   );
 };
+
+export const Cube = React.memo(CubeComponent);

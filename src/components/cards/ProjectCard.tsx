@@ -56,17 +56,17 @@ const ProjectCardContainer = styled.article`
 
 const ProjectCardHeader = styled.h2`
   min-width: max-content;
-  padding: 0.25rem 0.15rem;
   position: relative;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   margin: 0.5rem 0;
-  top: 6rem;
+  top: 5.8rem;
   left: -1.5rem;
 
   @media (min-width: 480px) {
     top: 6rem;
     left: -2rem;
+    font-size: 1rem;
   }
   @media (min-width: 768px) {
     font-size: 1.3rem;
@@ -74,6 +74,7 @@ const ProjectCardHeader = styled.h2`
     left: -2.5rem;
   }
   @media (min-width: 992px) {
+    font-size: 1.4rem;
     top: -7rem;
     left: -3.3rem;
   }
