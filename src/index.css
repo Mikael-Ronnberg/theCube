@@ -1,9 +1,27 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('../node_modules/augmented-ui/augmented-ui.min.css');
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+@font-face {
+  font-family: 'Molot';
+  src: local('Molot'), url('./fonts/Molot.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'DroidSansMono';
+  src: local('DroidSansMono'), url('./fonts/DroidSansMono.ttf') format('truetype');
+}
+
+body {
+  font-family: 'DroidSansMono', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Molot', sans-serif;
+  letter-spacing: 0.8px;
 }
 
 * {
