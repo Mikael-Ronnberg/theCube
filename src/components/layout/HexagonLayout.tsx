@@ -26,17 +26,17 @@ const HexagonGridContainer = styled.section`
 
   @media (min-width: 480px) {
     --size: calc(calc(600px / var(--Nhexa)) - var(--gap));
-    bottom: 500px;
+    bottom: 570px;
     left: -24px;
   }
   @media (min-width: 768px) {
     --size: calc(calc(900px / var(--Nhexa)) - var(--gap));
-    bottom: 540px;
+    bottom: 640px;
     left: -30px;
   }
   @media (min-width: 992px) {
     --size: calc(calc(1100px / var(--Nhexa)) - var(--gap));
-    bottom: 580px;
+    bottom: 720px;
     left: -30px;
   }
 `;
