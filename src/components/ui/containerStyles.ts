@@ -49,7 +49,7 @@ export const ProjectsContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 4rem;
+  grid-gap: 1rem;
   @media (min-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 3rem;
