@@ -68,7 +68,7 @@ export const DisplayContainer = styled.div`
   height: 84%;
 
   --aug-tr: 7px;
-  --aug-tl: 5px;
+  --aug-tl: 10px;
   --aug-t: 5px;
 
   --aug-br: 10px;

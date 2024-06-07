@@ -28,9 +28,6 @@ import ppd from "./work/ppd.png";
 import todo from "./work/todo.png";
 import sb from "./work/sb.png";
 
-import bildhistoria from "./company/bildhistoria.png";
-import medieinstitutet from "./company/medieinstitutet.png";
-
 export {
   gamenerd,
   plantnerd,
@@ -57,6 +54,4 @@ export {
   ppd,
   todo,
   sb,
-  bildhistoria,
-  medieinstitutet,
 };

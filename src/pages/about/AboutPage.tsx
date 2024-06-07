@@ -17,16 +17,20 @@ export const AboutPage = () => {
           <TextContainer>
             <NormalHeader>Overview</NormalHeader>
             <NormalText>
-              I'm on an exciting journey to become a FrontEnd developer,
-              starting as a student at Medieinstitutet in Stockholm where we've
-              explored and scratched the surface of HTML/CSS, JavaScript,
-              TypeScript, React, NodeJS, GraphQL, and REST API to learning Agile
-              Project Management and UX design to create meaningful experiences.
+              Recently graduated Junior Frontend developer from Medieinstitutet
+              in Stockholm, where I explored and scratched the surface of
+              HTML/CSS, JavaScript, TypeScript, React, NodeJS, GraphQL, and REST
+              API.
               <br />
-              Outside of class, I'm diving into ThreeJS/R3F to broaden my skills
-              and to blend my knowledge with real-world experience. Feel free to
-              see some of my works and reach out if you want further
-              information!
+              During my studies, I also learned about Agile Project Management
+              and UX design, focusing on creating user-friendly experiences
+              according to today's industry standards.
+              <br />
+              <br />
+              Nowdays I'm diving into techs such as ThreeJS/R3F and Godot to
+              broaden my skills and to blend my knowledge with real-world
+              experience. Feel free to check out some of my work and reach out
+              if you want further information!
             </NormalText>
           </TextContainer>
           <ServiceCardContainer>

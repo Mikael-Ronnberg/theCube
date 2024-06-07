@@ -27,7 +27,7 @@ export const useCubeSizeAndPositions = () => {
     if (window.screen.width < 768) {
       newHtmlPositions = {
         home: [-0.15, 0.1, halfDepth] as [number, number, number],
-        contact: [-0.08, halfDepth, 0] as [number, number, number],
+        contact: [-0.1, halfDepth, 0] as [number, number, number],
         works: [-0.1, -0.05, -halfDepth] as [number, number, number],
         about: [-0.1, -halfDepth, 0] as [number, number, number],
       };

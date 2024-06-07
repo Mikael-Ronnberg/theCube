@@ -10,8 +10,6 @@ import {
   git,
   figma,
   docker,
-  bildhistoria,
-  medieinstitutet,
   threejs,
   webdev,
   reactlogo,
@@ -98,37 +96,37 @@ const technologies = [
   { name: "jquery", icon: jquery },
 ];
 
-const experiences = [
-  {
-    title: "Frontend Developer Student",
-    company_name: "Medieinstitutet",
-    icon: medieinstitutet,
-    iconBg: "#ffffff",
-    date: "Sep 2022 - Present",
-    points: [
-      "HTML/CSS - Bootstrap, SCSS,",
-      "JavaScript basics/advance - Vanilla JS,Typescript, React, Vue",
-      "Testing - End to End tests, Cypress, Jest",
-      "Agile project management - Jira, Scrum, sprintplanning, retrospective",
-      "Work methodology for developers - versionmanagement system, refractor code",
-      "UX/Usability - Design from wireframes, Interfacemanagement, Figma",
-      "Graphical tools for interface design - Figma, PS,color- och typography",
-      "Internship 1 & 2 - Svensk porträttfoto/Bildhistoria -mainly working with React/typescript and bootstrap/styled components",
-    ],
-  },
-  {
-    title: "Web Developer Internship",
-    company_name: "Bildhistoria",
-    icon: bildhistoria,
-    iconBg: "#383E56",
-    date: "Sep 2023 - Present",
-    points: [
-      "Developing and maintaining website using React.js, typescript and other related technologies.",
-      "Collaborating with cross-functional teams and other developers to create high-quality experience.",
-      "Implementing responsive design and compatibility.",
-    ],
-  },
-];
+// const experiences = [
+//   {
+//     title: "Frontend Developer Student",
+//     company_name: "Medieinstitutet",
+//     icon: medieinstitutet,
+//     iconBg: "#ffffff",
+//     date: "Sep 2022 - Present",
+//     points: [
+//       "HTML/CSS - Bootstrap, SCSS,",
+//       "JavaScript basics/advance - Vanilla JS,Typescript, React, Vue",
+//       "Testing - End to End tests, Cypress, Jest",
+//       "Agile project management - Jira, Scrum, sprintplanning, retrospective",
+//       "Work methodology for developers - versionmanagement system, refractor code",
+//       "UX/Usability - Design from wireframes, Interfacemanagement, Figma",
+//       "Graphical tools for interface design - Figma, PS,color- och typography",
+//       "Internship 1 & 2 - Svensk porträttfoto/Bildhistoria -mainly working with React/typescript and bootstrap/styled components",
+//     ],
+//   },
+//   {
+//     title: "Web Developer Internship",
+//     company_name: "Bildhistoria",
+//     icon: bildhistoria,
+//     iconBg: "#383E56",
+//     date: "Sep 2023 - Present",
+//     points: [
+//       "Developing and maintaining website using React.js, typescript and other related technologies.",
+//       "Collaborating with cross-functional teams and other developers to create high-quality experience.",
+//       "Implementing responsive design and compatibility.",
+//     ],
+//   },
+// ];
 
 const projects = [
   {
@@ -198,4 +196,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, projects };
+export { services, technologies, projects };

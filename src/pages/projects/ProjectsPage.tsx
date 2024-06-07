@@ -44,7 +44,7 @@ export const ProjectsPage = () => {
               These are some of my highlights, each entry provides a description
               along with links to the associated code repositories and live
               site. These selections exemplify some of the works and techniques
-              that we dwelved into during my education at Medieinstitutet.
+              that we through during my time at Medieinstitutet.
             </NormalText>
           </TextContainer>
 
