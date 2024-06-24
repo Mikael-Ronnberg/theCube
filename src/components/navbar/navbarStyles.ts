@@ -23,19 +23,12 @@ export const NavbarContainer = styled.nav`
   --aug-border-top: 0%;
   --aug-border-right: 0%;
   --aug-border-left: 0%;
-  --aug-border-bg: radial-gradient(at bottom right, pink 25%, transparent 50%),
-    skyblue 50% 50% / 100% 100%;
-
+  --aug-border-bg: skyblue;
   span {
     cursor: pointer;
   }
 
   @media (min-width: 768px) {
-    --aug-border-bg: radial-gradient(
-        at bottom center,
-        pink 25%,
-        transparent 50%
-      ),
-      skyblue 50% 50% / 100% 100%;
+    --aug-border-bg: skyblue;
   }
 `;

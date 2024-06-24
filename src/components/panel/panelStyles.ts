@@ -15,8 +15,7 @@ export const PanelContainer = styled.div`
   align-items: center;
   transition: transform 0.6s ease;
 
-  --aug-border-bg: radial-gradient(at top right, pink 25%, transparent 50%),
-    skyblue 50% 50% / 100% 100%;
+  --aug-border-bg: skyblue;
 
   --aug-border-all: 2px;
   --aug-border-right: 0%;
@@ -31,13 +30,9 @@ export const PanelContainer = styled.div`
     width: 65vw;
   }
   @media (min-width: 768px) {
-    --aug-border-bg: radial-gradient(at top center, pink 25%, transparent 50%),
-      skyblue 50% 50% / 100% 100%;
     width: 55vw;
   }
   @media (min-width: 992px) {
-    --aug-border-bg: radial-gradient(at top left, pink 25%, transparent 50%),
-      skyblue 50% 50% / 100% 100%;
     width: 50vw;
   }
 `;

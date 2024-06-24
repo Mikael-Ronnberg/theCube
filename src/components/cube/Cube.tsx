@@ -17,7 +17,7 @@ interface CubeProps {
   cubeRef: React.RefObject<Mesh>;
 }
 
-const CubeComponent = ({ cubeRef }: CubeProps) => {
+export const Cube = ({ cubeRef }: CubeProps) => {
   const [progressAnimationExecuted, setProgressAnimationExecuted] =
     useState(false);
   const { isMoved, activeSide } = useCubeState();
@@ -160,5 +160,3 @@ const CubeComponent = ({ cubeRef }: CubeProps) => {
     </mesh>
   );
 };
-
-export const Cube = React.memo(CubeComponent);
