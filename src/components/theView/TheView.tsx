@@ -8,11 +8,9 @@ import { Panel } from "../panel/Panel";
 import { Navbar } from "../navbar/Navbar";
 import { useDisplayComponentState } from "../../stores/displayComponentStore";
 import { CanvasContainer, ViewContainer } from "./theViewStyles";
-import { EffectComposer, Bloom, GodRays } from "@react-three/postprocessing";
 
 export const TheView = () => {
   const cubeRef = useRef<Mesh>(null);
-  const orbRef = useRef<Mesh>(null);
   const { isMoved } = useCubeState();
   const { currentComponent } = useDisplayComponentState();
 
