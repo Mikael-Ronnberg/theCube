@@ -16,7 +16,7 @@ import {
   plantnerd,
   gamenerd,
   ppd,
-  todo,
+  sbrun,
   sb,
   wordpress,
   php,
@@ -153,23 +153,27 @@ const projects = [
     live_name: "plant-dad-depot.pages.dev",
   },
   {
-    name: "Todo List",
+    name: "SB SwimRun",
     description:
-      "A simple Todo list made with basic Javascript. This was one of our assignments and it was kind of tricky to do. However, I'm kind of pleased how it turned out. Check it out!",
+      "Collect points and compete for the top 10! A game made in godot, rendered with react and stores data with firebase. Only for desktop at the moment",
     tags: [
       {
-        name: "js",
+        name: "react",
         color: "#7EC9F3",
       },
       {
-        name: "scss",
+        name: "godot",
+        color: "#5FCD61",
+      },
+      {
+        name: "css",
         color: "#E98CBC",
       },
     ],
-    image: todo,
-    code_link: "https://github.com/Mikael-Ronnberg/Todo-List",
-    live_link: "https://retro-todo-list.pages.dev",
-    live_name: "retro-todo-list.pages.dev",
+    image: sbrun,
+    code_link: "https://github.com/Mikael-Ronnberg/SB-Gamepage",
+    live_link: "https://sb-gamepage.pages.dev",
+    live_name: "sb-gamepage.pages.dev",
   },
   {
     name: "Svepa Botten",

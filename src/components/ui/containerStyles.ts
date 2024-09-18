@@ -4,11 +4,10 @@ export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  //overflow: hidden;
   /* margin-left: 2rem; */
 
   @media (min-width: 480px) {

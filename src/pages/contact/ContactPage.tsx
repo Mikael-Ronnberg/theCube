@@ -26,7 +26,12 @@ export const ContactPage = () => {
 
       <NormalText>Don't be a stranger. Get in touch!</NormalText>
 
-      <NormalButton onClick={() => HandleContactClick()}>Message</NormalButton>
+      <NormalButton
+        onClick={() => HandleContactClick()}
+        style={{ marginTop: "5rem" }}
+      >
+        Message
+      </NormalButton>
     </MainContainer>
   );
 };

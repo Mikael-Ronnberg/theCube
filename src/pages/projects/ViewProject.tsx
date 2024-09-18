@@ -142,7 +142,7 @@ export const ViewProject = ({ project }: ViewProjectProps) => {
           <ProjectHeader>{name}</ProjectHeader>
           <ProjectImage src={image} alt={name} />
 
-          <TextTag>Desc.:</TextTag>
+          <TextTag>Desc:</TextTag>
           <ProjectText>{description}</ProjectText>
           <TextTag>Tech:</TextTag>
           <TagContainers>

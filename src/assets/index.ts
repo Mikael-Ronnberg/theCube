@@ -25,8 +25,8 @@ import wordpress from "./tech/Wordpress.png";
 import jquery from "./tech/jquery.png";
 
 import ppd from "./work/ppd.png";
-import todo from "./work/todo.png";
 import sb from "./work/sb.png";
+import sbrun from "./work/sb-run.png";
 
 export {
   gamenerd,
@@ -52,6 +52,6 @@ export {
   wordpress,
   jquery,
   ppd,
-  todo,
   sb,
+  sbrun,
 };

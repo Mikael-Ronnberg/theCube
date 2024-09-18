@@ -6,8 +6,8 @@
 }
 
 @font-face {
-  font-family: 'Molot';
-  src: local('Molot'), url('./fonts/Molot.otf') format('opentype');
+  font-family: 'JosefinSans';
+  src: local('JosefinSans'), url('./fonts/JosefinSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -20,7 +20,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Molot', sans-serif;
+  font-family: 'JosefinSans', sans-serif;
   letter-spacing: 0.8px;
 }
 
