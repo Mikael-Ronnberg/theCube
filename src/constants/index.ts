@@ -15,8 +15,8 @@ import {
   reactlogo,
   plantnerd,
   gamenerd,
-  ppd,
   sbrun,
+  curacon,
   sb,
   wordpress,
   php,
@@ -130,27 +130,27 @@ const technologies = [
 
 const projects = [
   {
-    name: "Plant Dad Depot",
+    name: "Cura Connect",
     description:
-      "A simple webshop, that started as a group assignement in the course Basic Javascript but that I later remade. It lacks the backend part and uses mockdata instead. All images (except hero img) are AI generated using Midjourney",
+      "This is a website I developed for Cura Connect. It’s a complete redesign of their previous site, implemented using the Understrap theme, which I customized to meet their specific needs. I also developed MU-plugins, including a custom contact form, and integrated SEO. The deployment is managed through a manual Git-based pipeline, similar to CI/CD but without automated tests or build processes. Feel free to check out the website yourself!",
     tags: [
       {
-        name: "react",
+        name: "wordpress",
         color: "#7EC9F3",
       },
       {
-        name: "typescript",
+        name: "php",
         color: "#5FCD61",
       },
       {
-        name: "chakraui",
+        name: "scss",
         color: "#E98CBC",
       },
     ],
-    image: ppd,
-    code_link: "https://github.com/Mikael-Ronnberg/Yet-Another-Webshop",
-    live_link: "https://plant-dad-depot.pages.dev",
-    live_name: "plant-dad-depot.pages.dev",
+    image: curacon,
+    code_link: "",
+    live_link: "https://www.curaconnect.se",
+    live_name: "Cura Connect",
   },
   {
     name: "SB SwimRun",

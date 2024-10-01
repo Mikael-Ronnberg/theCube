@@ -71,6 +71,8 @@ const ProjectLinkText = styled.a`
   font-size: 0.8rem;
   margin: 0.5rem 0;
   margin-left: 0.5rem;
+  pointer-events: ${(props) => (props.href === "" ? "none" : "auto")};
+  text-decoration: ${(props) => (props.href === "" ? "none" : "underline")};
 
   @media (min-width: 480px) {
     font-size: 0.8rem;
@@ -153,8 +155,8 @@ export const ViewProject = ({ project }: ViewProjectProps) => {
             ))}
           </TagContainers>
           <TextTag>Git: </TextTag>
-          <ProjectLinkText href={code_link} target="blank">
-            {name}
+          <ProjectLinkText href={code_link || ""} target="blank">
+            {code_link ? name : "Not Available"}
           </ProjectLinkText>
           <TextTag>Live: </TextTag>
           <ProjectLinkText href={live_link} target="blank">

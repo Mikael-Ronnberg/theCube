@@ -24,9 +24,9 @@ import php from "./tech/php.png";
 import wordpress from "./tech/Wordpress.png";
 import jquery from "./tech/jquery.png";
 
-import ppd from "./work/ppd.png";
 import sb from "./work/sb.png";
 import sbrun from "./work/sb-run.png";
+import curacon from "./work/curacon.png";
 
 export {
   gamenerd,
@@ -51,7 +51,7 @@ export {
   php,
   wordpress,
   jquery,
-  ppd,
   sb,
   sbrun,
+  curacon,
 };
