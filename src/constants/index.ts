@@ -155,7 +155,7 @@ const projects = [
   {
     name: "SB SwimRun",
     description:
-      "Collect points and compete for the top 10! A game made in godot, rendered with react and stores data with firebase. Only for desktop at the moment",
+      "Collect points and compete for the top 10! A game made in Godot, frontend with React and stores data with Firebase. Only for desktop at the moment",
     tags: [
       {
         name: "react",
