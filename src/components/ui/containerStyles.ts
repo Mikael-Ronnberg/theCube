@@ -9,6 +9,7 @@ export const MainContainer = styled.div`
   align-items: center;
   //overflow: hidden;
   /* margin-left: 2rem; */
+  padding: 0 2rem;
 
   @media (min-width: 480px) {
   }
